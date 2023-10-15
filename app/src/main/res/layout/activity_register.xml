@@ -1,80 +1,302 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     tools:context=".Register">
 
-    <EditText
-        android:id="@+id/editTextName"
+    <!--    Close Button    -->
+    <ImageButton
+        android:id="@+id/closeLoginPage"
+        android:layout_width="70dp"
+        android:layout_height="100dp"
+        android:src="@drawable/baseline_close_24"
+        android:background="@drawable/half_square_half_circle"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:contentDescription="Close button"
+        android:layout_marginLeft="16dp"/>
+
+    <!-- Nested LinearLayout container -->
+    <LinearLayout
+        android:id="@+id/topContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="First Name"
-        android:inputType="text"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="131dp" />
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp">
 
-    <EditText
-        android:id="@+id/editTextSurname"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Surname"
-        android:inputType="text"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="176dp" />
 
-    <EditText
-        android:id="@+id/editTextEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="212dp" />
 
-    <EditText
-        android:id="@+id/editTextPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Password"
-        android:inputType="textPassword"
-        tools:layout_editor_absoluteX="-16dp"
-        tools:layout_editor_absoluteY="257dp" />
+        <!-- Text view saying "bobolink" -->
+        <TextView
+            android:id="@+id/textViewBobolink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create an account"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:textColor="#FDCB05"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp"/>
 
-    <EditText
-        android:id="@+id/editTextAge"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Age"
-        android:inputType="text"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="351dp" />
+        <TextView
+            android:id="@+id/textHelloMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Become apart of our community"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="#FDCB05"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewBobolink"
+            android:layout_marginBottom="20dp"/>
 
-    <EditText
-        android:id="@+id/editTextGender"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Gender"
-        android:inputType="text"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="302dp" />
 
-    <EditText
-        android:id="@+id/editTextArea"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Your Area of Residence"
-        android:inputType="text"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="396dp" />
 
-    <Button
-        android:id="@+id/buttonRegister"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Register"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="488dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
+            android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Enter first name label -->
+            <TextView
+                android:id="@+id/text_firstname"
+                android:layout_gravity="left"
+                android:layout_marginStart="20dp"
+                android:layout_height="24dp"
+                android:layout_width="wrap_content"
+                android:text="First Name"
+                android:textColor="@color/white"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/textbox_label_component"
+                android:paddingStart="10dp"
+                android:paddingRight="10dp"/>
+
+            <!-- Enter last name text-box -->
+            <EditText
+                android:id="@+id/editTextName"
+                android:layout_height="55dp"
+                android:layout_width="match_parent"
+                android:layout_below="@id/text_firstname"
+                android:layout_alignLeft="@id/text_firstname"
+                android:background="@drawable/rounded_yellow_border"
+                android:hint="Enter your first name"
+                android:textColor="@color/white"
+                android:textColorHint="@android:color/white"
+                android:textSize="16sp"
+                android:paddingStart="20dp"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- Enter last name label -->
+            <TextView
+                android:id="@+id/text_surname"
+                android:layout_gravity="left"
+                android:layout_marginStart="20dp"
+                android:layout_height="24dp"
+                android:layout_width="wrap_content"
+                android:text="Last Name"
+                android:textColor="@color/white"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/textbox_label_component"
+                android:paddingStart="10dp"
+                android:paddingRight="10dp"/>
+
+            <!-- Enter last name text-box -->
+            <EditText
+                android:id="@+id/editTextSurname"
+                android:layout_height="55dp"
+                android:layout_width="match_parent"
+                android:layout_below="@id/text_firstname"
+                android:layout_alignLeft="@id/text_firstname"
+                android:background="@drawable/rounded_yellow_border"
+                android:hint="Enter your last name"
+                android:textColor="@color/white"
+                android:textColorHint="@android:color/white"
+                android:textSize="16sp"
+                android:paddingStart="20dp"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- Enter email label -->
+            <TextView
+                android:id="@+id/text_email"
+                android:layout_gravity="left"
+                android:layout_marginStart="20dp"
+                android:layout_height="24dp"
+                android:layout_width="wrap_content"
+                android:text="Email"
+                android:textColor="@color/white"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/textbox_label_component"
+                android:paddingStart="10dp"
+                android:paddingRight="10dp"/>
+
+            <!-- Enter email text-box -->
+            <EditText
+                android:id="@+id/editTextEmail"
+                android:layout_height="55dp"
+                android:layout_width="match_parent"
+                android:layout_below="@id/text_firstname"
+                android:layout_alignLeft="@id/text_firstname"
+                android:background="@drawable/rounded_yellow_border"
+                android:hint="Enter your email address"
+                android:textColor="@color/white"
+                android:textColorHint="@android:color/white"
+                android:textSize="16sp"
+                android:paddingStart="20dp"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- Enter password label -->
+            <TextView
+                android:id="@+id/text_password"
+                android:layout_gravity="left"
+                android:layout_marginStart="20dp"
+                android:layout_height="24dp"
+                android:layout_width="wrap_content"
+                android:text="Password"
+                android:textColor="@color/white"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/textbox_label_component"
+                android:paddingStart="10dp"
+                android:paddingRight="10dp"/>
+
+            <!-- Enter password text-box -->
+            <EditText
+                android:id="@+id/editTextPassword"
+                android:layout_height="55dp"
+                android:layout_width="match_parent"
+                android:layout_below="@id/text_firstname"
+                android:layout_alignLeft="@id/text_firstname"
+                android:background="@drawable/rounded_yellow_border"
+                android:hint="**************"
+                android:inputType="textPassword"
+                android:textColor="@color/white"
+                android:textColorHint="@android:color/white"
+                android:textSize="16sp"
+                android:paddingStart="20dp"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- Enter confirm password label -->
+            <TextView
+                android:id="@+id/text_Confirmpassword"
+                android:layout_gravity="left"
+                android:layout_marginStart="20dp"
+                android:layout_height="24dp"
+                android:layout_width="wrap_content"
+                android:text="Password"
+                android:textColor="@color/white"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/textbox_label_component"
+                android:paddingStart="10dp"
+                android:paddingRight="10dp"/>
+
+            <!-- Enter confirm password text-box -->
+            <EditText
+                android:id="@+id/editTextConfirmPassword"
+                android:layout_height="55dp"
+                android:layout_width="match_parent"
+                android:layout_below="@id/text_firstname"
+                android:layout_alignLeft="@id/text_firstname"
+                android:background="@drawable/rounded_yellow_border"
+                android:hint="**************"
+                android:inputType="textPassword"
+                android:textColor="@color/white"
+                android:textColorHint="@android:color/white"
+                android:textSize="16sp"
+                android:paddingStart="20dp"
+                android:layout_marginBottom="20dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <!--        Not Visible by default        -->
+                <TextView
+                    android:id="@+id/textErroMessage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sample error message"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="#dc143c"
+                    android:layout_marginBottom="10dp"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+        <Button
+            android:id="@+id/buttonRegister"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="REGISTER"
+            android:background="@drawable/secondary_style_button"
+            app:layout_constraintTop_toBottomOf="@+id/editTextArea"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/topContent"
+            >
+
+            <TextView
+                android:id="@+id/textRegisterHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Already have an account?"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#FDCB05"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewBobolink"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="20dp"/>
+
+            <TextView
+                android:id="@+id/buttonLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="Login"
+                style="@style/TextButtonStyle"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewBobolink"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="13dp"
+                android:background="?attr/selectableItemBackground"
+                android:padding="4dp"
+                android:clickable="true"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -92,7 +92,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="LOGIN"
-            android:background="@drawable/rounded_yellow_button"
+            android:background="@drawable/secondary_style_button"
             app:layout_constraintTop_toBottomOf="@+id/inputPassword"
             android:layout_marginTop="48dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -209,7 +209,7 @@
                 android:layout_height="70dp"
                 android:layout_marginRight="20dp"
                 android:src="@drawable/apple_black_icon"
-            android:background="@drawable/rounded_square_button"
+            android:background="@drawable/primary_style_button"
             android:text=""
             />
 
@@ -219,7 +219,7 @@
                 android:layout_height="70dp"
                 android:layout_marginRight="20dp"
                 android:src="@drawable/google_black_icon"
-                android:background="@drawable/rounded_square_button"
+                android:background="@drawable/primary_style_button"
                 android:text=""
                 />
 
@@ -229,7 +229,7 @@
                 android:layout_height="70dp"
                 android:layout_marginRight="20dp"
                 android:src="@drawable/facebook_black_icon"
-                android:background="@drawable/rounded_square_button"
+                android:background="@drawable/primary_style_button"
                 android:text=""
                 />
 

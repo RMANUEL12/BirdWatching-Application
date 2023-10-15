@@ -1,0 +1,78 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".Login">
+
+
+    <!-- Nested LinearLayout container -->
+    <LinearLayout
+        android:id="@+id/topContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="80dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp">
+
+
+<!--    Insert Image here    -->
+        <ImageView
+            android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:src="@drawable/bobolink_app_logo"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp" />
+
+        <TextView
+            android:id="@+id/textHelloMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your one stop destination to explore your passion for birdwatching."
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="#FDCB05"
+            android:gravity="center"
+        android:layout_marginBottom="30dp"
+        android:layout_gravity="center_horizontal"
+            android:paddingRight="64dp"
+            android:paddingLeft="64dp"/>
+
+
+
+        <Button
+            android:id="@+id/buttonLogin"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="LOGIN"
+            android:background="@drawable/secondary_style_button"
+            app:layout_constraintTop_toBottomOf="@+id/inputPassword"
+            android:layout_marginTop="48dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/buttonRegister"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+                android:text="REGISTER"
+            android:background="@drawable/primary_style_button"
+            app:layout_constraintTop_toBottomOf="@+id/inputPassword"
+            android:layout_marginTop="48dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+
+
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>
