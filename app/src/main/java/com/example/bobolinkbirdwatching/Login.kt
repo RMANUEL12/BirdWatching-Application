@@ -8,13 +8,12 @@ import android.widget.Toast
 
 class Login : AppCompatActivity() {
 
-    private var btnLogin = Button(this);
-
+    private lateinit var btnLogin: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        btnLogin = findViewById<Button>(R.id.buttonLogin)
+        btnLogin = findViewById(R.id.buttonLogin)
 
         btnLogin.setOnClickListener {
             val email = findViewById<EditText>(R.id.inputEmail).text.toString()

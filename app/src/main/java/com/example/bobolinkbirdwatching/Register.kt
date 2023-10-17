@@ -9,29 +9,24 @@ import androidx.appcompat.app.AppCompatActivity
 
 
 class Register : AppCompatActivity() {
-    private var buttonRegister = Button(this);
 
+    private lateinit var buttonRegister: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-
-
-
-        buttonRegister = findViewById<Button>(R.id.buttonRegister)
+        buttonRegister = findViewById(R.id.buttonRegister)
 
         buttonRegister.setOnClickListener {
             //storing user input
             val email = findViewById<EditText>(R.id.editTextEmail).text.toString()
-            val password = findViewById<EditText>(R.id.editTextPassword).text.toString()
+            val password = findViewById<EditText>(R.id.editTextConfirmPassword).text.toString()
             val firstName = findViewById<EditText>(R.id.editTextName).text.toString()
             val surname = findViewById<EditText>(R.id.editTextSurname).text.toString()
-            val gender = findViewById<EditText>(R.id.editTextGender).text.toString()
-            val age = findViewById<EditText>(R.id.editTextAge).text.toString()
             val area = findViewById<EditText>(R.id.editTextArea).text.toString()
 
             //Creating a new user
-            val newUser = UserData(firstName, surname, gender, age, area, email, password)
+            val newUser = UserData(email, password, firstName, surname, area)
 
             //Adding the user to the list
             com.example.bobolinkbirdwatching.User.addUser(newUser)
