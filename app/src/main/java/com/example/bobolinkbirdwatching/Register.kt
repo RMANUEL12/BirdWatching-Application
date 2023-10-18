@@ -29,9 +29,15 @@ class Register : AppCompatActivity() {
                 val surname = findViewById<EditText>(R.id.editTextSurname).text.toString()
                 val area = findViewById<EditText>(R.id.editTextArea).text.toString()
 
+
+
+            //Adding the user to the list
+            com.example.bobolinkbirdwatching.User.addUser(newUser)
+
                 //verifying that no fields are empty
                 if (email.isNotEmpty() && password.isNotEmpty() && firstName.isNotEmpty() &&
                     surname.isNotEmpty() && area.isNotEmpty()){
+
 
                     //checking that password and confirmed password match
                     if (passwordTemp == password){

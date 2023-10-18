@@ -1,46 +1,43 @@
 package com.example.bobolinkbirdwatching
-
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.bobolinkbirdwatching.ui.theme.BoboLinkBirdwatchingTheme
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.example.bobolinkbirdwatching.AddSighting
+import com.example.bobolinkbirdwatching.BirdJournal
+import com.example.bobolinkbirdwatching.HotSpots
+import com.example.bobolinkbirdwatching.R
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
+    private lateinit var bottomNavigationView: BottomNavigationView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            BoboLinkBirdwatchingTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
+        setContentView(R.layout.activity_main)
+
+        bottomNavigationView = findViewById(R.id.bottom_navigation)
+
+        bottomNavigationView.setOnItemSelectedListener { menuItem ->
+            when(menuItem.itemId){
+                R.id.nav_hotspots -> {
+                    replaceFragment(HotSpots())
+                    true
                 }
+                R.id.nav_add -> {
+                    replaceFragment(AddSighting())
+                    true
+                }
+                R.id.nav_journal -> {
+                    replaceFragment(BirdJournal())
+                    true
+                }
+                else -> false
             }
         }
+        replaceFragment(HotSpots())
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    BoboLinkBirdwatchingTheme {
-        Greeting("Android")
+    private fun replaceFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction().replace(R.id.container, fragment).commit()
     }
 }

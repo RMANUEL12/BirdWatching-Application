@@ -1,4 +1,5 @@
 package com.example.bobolinkbirdwatching
+
     data class UserData(val firstName: String, val surname: String,
                         var area: String, var email: String, var password: String)
 
