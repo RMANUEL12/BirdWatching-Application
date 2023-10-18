@@ -28,6 +28,7 @@ class Register : AppCompatActivity() {
             //Creating a new user
             val newUser = UserData(email, password, firstName, surname, area)
 
+
             //Adding the user to the list
             com.example.bobolinkbirdwatching.User.addUser(newUser)
 
