@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Settings">
+
+    <TextView
+        android:id="@+id/textViewUpdateDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update Account Details"
+        tools:layout_editor_absoluteX="132dp"
+        tools:layout_editor_absoluteY="149dp" />
+
+    <EditText
+        android:id="@+id/editTextNewArea"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_below="@id/text_firstname"
+        android:layout_alignLeft="@id/text_firstname"
+        android:background="@drawable/rounded_yellow_border"
+        android:hint="Enter your first name"
+        android:paddingStart="20dp"
+        android:textColor="@color/white"
+        android:textColorHint="@android:color/white"
+        android:textSize="16sp"
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="330dp" />
+
+    <EditText
+        android:id="@+id/editTextNewPassword"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_below="@id/text_firstname"
+        android:layout_alignLeft="@id/text_firstname"
+        android:background="@drawable/rounded_yellow_border"
+        android:hint="Enter your first name"
+        android:paddingStart="20dp"
+        android:textColor="@color/white"
+        android:textColorHint="@android:color/white"
+        android:textSize="16sp"
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="259dp" />
+
+    <EditText
+        android:id="@+id/editTextNewEmail"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_below="@id/text_firstname"
+        android:layout_alignLeft="@id/text_firstname"
+        android:background="@drawable/rounded_yellow_border"
+        android:hint="Enter your first name"
+        android:paddingStart="20dp"
+        android:textColor="@color/white"
+        android:textColorHint="@android:color/white"
+        android:textSize="16sp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="191dp" />
+
+    <Button
+        android:id="@+id/buttonSaveSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save Changes"
+        tools:layout_editor_absoluteX="141dp"
+        tools:layout_editor_absoluteY="433dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

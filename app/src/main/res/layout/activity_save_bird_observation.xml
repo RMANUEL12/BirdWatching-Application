@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SaveBirdObservation">
+
+
+    <Spinner
+        android:id="@+id/birdBreedSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="127dp" />
+
+    <TextView
+        android:id="@+id/textAddBreed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Add Bird Breed"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="171dp" />
+
+    <EditText
+        android:id="@+id/editTextAddBreed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Breed Name"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="190dp" />
+
+    <TextView
+        android:id="@+id/textSelectBreed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Select Bird Breed"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="108dp" />
+
+    <TextView
+        android:id="@+id/textLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Sighting Location: Current Location"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="235dp" />
+
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save Sighting"
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="374dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
