@@ -1,6 +1,7 @@
 package com.example.bobolinkbirdwatching
 
 import android.content.ContentValues
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -25,7 +26,14 @@ class Login : AppCompatActivity() {
                 val user =
                     com.example.bobolinkbirdwatching.User.findUserByEmailAndPassword(email, password)
                 if (user != null) {
-                    // User will be directed to home page
+
+                    //--REDIRECTING TO HOME(MAP)
+                    //Creating an Intent to navigate to the activity
+                    val intent = Intent(this, MapsActivity::class.java)
+
+                    //Starting the activity
+                    startActivity(intent)
+
                 } else {
                     // Showing message for invalid user details
                     Toast.makeText(applicationContext, "Invalid Details. Please Retry or Register...", Toast.LENGTH_SHORT).show()

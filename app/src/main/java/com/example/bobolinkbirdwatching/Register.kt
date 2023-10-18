@@ -1,6 +1,7 @@
 package com.example.bobolinkbirdwatching
 
 import android.content.ContentValues
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -40,6 +41,13 @@ class Register : AppCompatActivity() {
 
                         //Adding the user to the list
                         com.example.bobolinkbirdwatching.User.addUser(newUser)
+
+                        //--REDIRECTING TO LOGIN
+                        //Creating an Intent to navigate to the activity
+                        val intent = Intent(this, Login::class.java)
+
+                        //Starting the activity
+                        startActivity(intent)
 
                     }
                     else{

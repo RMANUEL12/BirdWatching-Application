@@ -1,6 +1,6 @@
 package com.example.bobolinkbirdwatching
     data class UserData(val firstName: String, val surname: String,
-                     val area: String, val email: String, val password: String)
+                        var area: String, var email: String, var password: String)
 
     object User {
         private val userList = mutableListOf<UserData>()
