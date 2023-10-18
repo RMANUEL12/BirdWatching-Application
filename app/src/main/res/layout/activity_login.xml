@@ -9,7 +9,7 @@
 
     <!--    Close Button    -->
     <ImageButton
-        android:id="@+id/closeLoginPage"
+        android:id="@+id/closePage"
         android:layout_width="70dp"
         android:layout_height="80dp"
         android:src="@drawable/baseline_close_24"
@@ -58,35 +58,44 @@
             app:layout_constraintTop_toBottomOf="@+id/textViewBobolink"
             android:layout_marginBottom="60dp"/>
 
+
+        <!-- Enter email text-box -->
         <EditText
             android:id="@+id/inputEmail"
+            android:layout_height="70dp"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
             android:background="@drawable/rounded_yellow_border"
-            app:layout_constraintTop_toBottomOf="@+id/textViewBobolink"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:paddingStart="16dp"/>
+            android:inputType="textEmailAddress"
+            android:hint="Enter your email address"
+            android:textColorHint="@android:color/white"
+            android:textSize="16sp"
+            android:paddingStart="20dp"
+            android:paddingEnd="15dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:drawableRight="@drawable/baseline_mail_outline_24"/>
 
+
+
+        <!-- Enter password text-box -->
         <EditText
             android:id="@+id/inputPassword"
+            android:layout_height="70dp"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
             android:background="@drawable/rounded_yellow_border"
-            app:layout_constraintTop_toBottomOf="@+id/inputEmail"
-            android:layout_marginTop="48dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:paddingStart="16dp"/>
+            android:inputType="textPassword"
+            android:hint="Enter your password"
+            android:textColorHint="@android:color/white"
+            android:textSize="16sp"
+            android:paddingStart="20dp"
+            android:paddingEnd="15dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:drawableRight="@drawable/baseline_lock_24"/>
 
         <Button
             android:id="@+id/buttonLogin"
@@ -96,7 +105,7 @@
             android:textColor="@color/black"
             android:background="@drawable/secondary_style_button"
             app:layout_constraintTop_toBottomOf="@+id/inputPassword"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

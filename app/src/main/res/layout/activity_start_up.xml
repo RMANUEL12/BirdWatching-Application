@@ -5,7 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    tools:context=".Login">
+    tools:context=".StartUp">
+
+    <!--    Close Button    -->
+    <ImageButton
+        android:id="@+id/closePage"
+        android:layout_width="70dp"
+        android:layout_height="80dp"
+        android:src="@drawable/baseline_close_24"
+        android:background="@drawable/half_square_half_circle"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="16dp"
+        android:contentDescription="Facebook Login Button"/>
 
 
     <!-- Nested LinearLayout container -->

@@ -40,11 +40,9 @@
             android:layout_height="60dp"
             android:text="Let's get started"
             android:textColor="#FFCE03"
-            android:background="@drawable/tertiary_style_button"
+            android:background="@drawable/primary_style_button"
             app:layout_constraintTop_toBottomOf="@+id/editTextArea"
-            android:layout_marginTop="600dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:layout_marginTop="600dp" />
 
 
     </LinearLayout>
