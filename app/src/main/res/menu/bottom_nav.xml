@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_hotspots"
+        android:title="Hotspots"
+        android:icon="@drawable/location_pin"/>
+
+    <item
+        android:id="@+id/nav_add"
+        android:title="Add Sighting"
+        android:icon="@drawable/binoculars"/>
+
+    <item
+        android:id="@+id/nav_journal"
+        android:title="Journal"
+        android:icon="@drawable/article_headline_journal"/>
+</menu>

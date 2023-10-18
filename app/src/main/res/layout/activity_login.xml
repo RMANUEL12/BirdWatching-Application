@@ -16,7 +16,8 @@
         android:background="@drawable/half_square_half_circle"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="16dp"/>
+        android:layout_marginLeft="16dp"
+        android:contentDescription="Facebook Login Button"/>
 
     <!-- Nested LinearLayout container -->
     <LinearLayout
@@ -126,14 +127,14 @@
         <TextView
             android:id="@+id/buttonRegister"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:text="Register"
             style="@style/TextButtonStyle"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewBobolink"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="38dp"
             android:layout_marginBottom="20dp"
             android:background="?attr/selectableItemBackground"
             android:padding="4dp"
@@ -211,6 +212,7 @@
                 android:src="@drawable/apple_black_icon"
             android:background="@drawable/primary_style_button"
             android:text=""
+                android:contentDescription="Apple Login Button"
             />
 
             <ImageButton
@@ -221,6 +223,7 @@
                 android:src="@drawable/google_black_icon"
                 android:background="@drawable/primary_style_button"
                 android:text=""
+                android:contentDescription="Google Login Button"
                 />
 
             <ImageButton
@@ -231,6 +234,7 @@
                 android:src="@drawable/facebook_black_icon"
                 android:background="@drawable/primary_style_button"
                 android:text=""
+                android:contentDescription="Facebook Login Button"
                 />
 
         </LinearLayout>
