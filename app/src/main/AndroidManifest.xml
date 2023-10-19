@@ -22,11 +22,7 @@
             android:exported="true"
             android:label="Settings"
             android:theme="@style/Theme.AppCompat">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
@@ -43,19 +39,15 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="${MAPS_API_KEY}" />
 
-        <activity
-            android:name=".MapsActivity"
-            android:exported="true"
-            android:label="@string/title_activity_maps"
-            android:theme="@style/Theme.AppCompat">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--        <activity-->
+<!--            android:name=".MapsActivity"-->
+<!--            android:exported="true"-->
+<!--            android:label="@string/title_activity_maps"-->
+<!--            android:theme="@style/Theme.AppCompat">-->
+<!--        </activity>-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
-            android:name=".startUp"
+            android:name=".StartUp"
             android:exported="false" />
         <activity
             android:name=".GetStarted"
@@ -74,27 +66,18 @@
             android:exported="true"
             android:label="SaveBirdObservation"
             android:theme="@style/Theme.AppCompat">
+
         </activity>
 
         <activity
             android:name=".Login"
             android:exported="true"
             android:theme="@style/Theme.AppCompat">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".Register"
             android:exported="true"
             android:theme="@style/Theme.AppCompat">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity

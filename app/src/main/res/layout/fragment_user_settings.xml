@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".Settings">
+    tools:context=".UserSettings">
+
+    <!-- TODO: Update blank fragment layout -->
 
     <!-- Nested LinearLayout container -->
     <LinearLayout
@@ -21,8 +21,8 @@
 
         <!--    Insert Image here    -->
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:src="@drawable/user_profile_filler_image"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
@@ -66,7 +66,7 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_userDetails"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="65dp"
             android:layout_gravity="center"
             android:text="Personal Information"
             android:textColor="@color/black"
@@ -83,7 +83,7 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_notifications"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="65dp"
             android:layout_gravity="center"
             android:text="Map Settings"
             android:textColor="@color/black"
@@ -97,22 +97,22 @@
             android:drawableLeft="@drawable/baseline_map_24"
             android:paddingStart="16dp" />
 
-<!--        <androidx.appcompat.widget.AppCompatButton-->
-<!--            android:id="@+id/btn_termsAndConditions"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="55dp"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:text="Terms and Conditions"-->
-<!--            android:textColor="@color/black"-->
-<!--            android:background="@drawable/primary_style_button"-->
-<!--            android:textSize="16sp"-->
-<!--            android:textAllCaps="false"-->
-<!--            android:layout_marginTop="30dp"-->
-<!--            android:layout_marginBottom="15dp"-->
-<!--            android:drawableRight="@drawable/baseline_arrow_forward_ios_24"-->
-<!--            android:paddingEnd="16dp"-->
-<!--            android:drawableLeft="@drawable/baseline_info_24"-->
-<!--            android:paddingStart="16dp" />-->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_termsAndConditions"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_gravity="center"
+            android:text="Terms and Conditions"
+            android:textColor="@color/black"
+            android:background="@drawable/primary_style_button"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="15dp"
+            android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
+            android:paddingEnd="16dp"
+            android:drawableLeft="@drawable/baseline_info_24"
+            android:paddingStart="16dp" />
 
 
         <Button
@@ -122,10 +122,8 @@
             android:text="Log Out"
             android:textColor="@color/black"
             android:background="@drawable/secondary_style_button"
-            android:layout_marginTop="48dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:layout_marginTop="48dp" />
 
     </LinearLayout>
 
-</RelativeLayout>
+</FrameLayout>

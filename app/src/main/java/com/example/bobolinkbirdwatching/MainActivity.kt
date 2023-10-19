@@ -31,6 +31,10 @@ class MainActivity : AppCompatActivity() {
                     replaceFragment(BirdJournal())
                     true
                 }
+                R.id.nav_settings -> {
+                    replaceFragment(UserSettings())
+                    true
+                }
                 else -> false
             }
         }

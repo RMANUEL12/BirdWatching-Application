@@ -13,4 +13,9 @@
         android:id="@+id/nav_journal"
         android:title="Journal"
         android:icon="@drawable/article_headline_journal"/>
+
+    <item
+        android:id="@+id/nav_settings"
+        android:title="Settings"
+        android:icon="@drawable/baseline_settings_24"/>
 </menu>

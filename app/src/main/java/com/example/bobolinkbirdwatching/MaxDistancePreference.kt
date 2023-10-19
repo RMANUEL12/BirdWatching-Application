@@ -11,7 +11,7 @@ import com.google.android.gms.maps.model.LatLng
 class MaxDistancePreference(
     private val context: Context,
     private val metricImperialPreference: MetricImperialPreference,
-    private val mapActivity: MapsActivity // Reference to the MapsActivity
+    private val mapActivity: HotSpots
 ) {
 
     private val sharedPreferences = context.getSharedPreferences("MaxDistancePrefs", Context.MODE_PRIVATE)
