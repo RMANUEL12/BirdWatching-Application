@@ -23,7 +23,9 @@
             android:theme="@style/Theme.BoboLinkBirdwatching" />
         <activity
             android:name=".PersonalInformation"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AppCompat"/>
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
