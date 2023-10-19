@@ -7,17 +7,39 @@
     android:background="#000000"
     tools:context=".Register">
 
-    <!--    Close Button    -->
-    <ImageButton
-        android:id="@+id/closeLoginPage"
-        android:layout_width="70dp"
-        android:layout_height="100dp"
-        android:src="@drawable/baseline_close_24"
-        android:background="@drawable/half_square_half_circle"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:contentDescription="Close button"
-        android:layout_marginLeft="16dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--    Close Button    -->
+        <ImageButton
+            android:id="@+id/closeLoginPage"
+            android:layout_width="70dp"
+            android:layout_height="100dp"
+            android:src="@drawable/baseline_close_24"
+            android:background="@drawable/half_square_half_circle"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:contentDescription="Close button"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="220dp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_updateDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:text="Save"
+            android:textColor="@color/black"
+            android:background="@drawable/primary_style_button"
+            android:textSize="14sp"
+            android:textAllCaps="true"
+            android:layout_marginTop="10dp"
+            android:paddingEnd="8dp"
+            android:drawableRight="@drawable/baseline_check_24"
+            android:paddingStart="6dp" />
+
+    </LinearLayout>
+
 
     <!-- Nested LinearLayout container -->
     <LinearLayout
@@ -76,7 +98,9 @@
             android:layout_marginBottom="6dp"/>
 
 
-
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -263,20 +287,7 @@
 
         </LinearLayout>
 
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/buttonRegister"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="Update"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:background="@drawable/secondary_style_button"
-            app:layout_constraintTop_toBottomOf="@+id/editTextArea"
-            android:layout_marginTop="10dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
+        </ScrollView>
 
     </LinearLayout>
 
