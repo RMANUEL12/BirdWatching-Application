@@ -17,7 +17,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="16dp"
-        android:contentDescription="Facebook Login Button"/>
+        android:contentDescription="Close Page Button"/>
 
     <!-- Nested LinearLayout container -->
     <LinearLayout

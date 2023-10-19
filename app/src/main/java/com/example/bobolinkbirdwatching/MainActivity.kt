@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setOnItemSelectedListener { menuItem ->
             when(menuItem.itemId){
                 R.id.nav_hotspots -> {
-                    replaceFragment(HotSpots())
+                    replaceFragment(FindBirds())
                     true
                 }
                 R.id.nav_add -> {
@@ -24,13 +24,13 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.nav_settings -> {
-                    replaceFragment(UserSettings())
+                    replaceFragment(UserSetting())
                     true
                 }
                 else -> false
             }
         }
-        replaceFragment(HotSpots())
+        replaceFragment(FindBirds())
     }
 
     private fun replaceFragment(fragment: Fragment) {

@@ -16,14 +16,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BoboLinkBirdwatching"
         tools:targetApi="31">
-
         <activity
-            android:name=".Settings"
-            android:exported="true"
-            android:label="Settings"
-            android:theme="@style/Theme.AppCompat">
-
-        </activity>
+            android:name=".MapsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_maps"
+            android:theme="@style/Theme.BoboLinkBirdwatching" />
+        <activity
+            android:name=".PersonalInformation"
+            android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -37,50 +37,36 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="${MAPS_API_KEY}" />
-
-<!--        <activity-->
-<!--            android:name=".MapsActivity"-->
-<!--            android:exported="true"-->
-<!--            android:label="@string/title_activity_maps"-->
-<!--            android:theme="@style/Theme.AppCompat">-->
-<!--        </activity>-->
-
+            android:value="${MAPS_API_KEY}" /> <!-- <activity -->
+        <!-- android:name=".MapsActivity" -->
+        <!-- android:exported="true" -->
+        <!-- android:label="@string/title_activity_maps" -->
+        <!-- android:theme="@style/Theme.AppCompat"> -->
+        <!-- </activity> -->
         <activity
             android:name=".StartUp"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".GetStarted"
-            android:exported="true">
-        </activity>
-
+            android:exported="true" />
         <activity
             android:name=".ViewBirdObservations"
             android:exported="true"
             android:label="ViewBirdObservations"
-            android:theme="@style/Theme.AppCompat">
-        </activity>
-
+            android:theme="@style/Theme.AppCompat" />
         <activity
             android:name=".SaveBirdObservation"
             android:exported="true"
             android:label="SaveBirdObservation"
-            android:theme="@style/Theme.AppCompat">
-
-        </activity>
-
+            android:theme="@style/Theme.AppCompat" />
         <activity
             android:name=".Login"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat">
-        </activity>
+            android:theme="@style/Theme.AppCompat" />
         <activity
             android:name=".Register"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat">
-        </activity>
-
+            android:theme="@style/Theme.AppCompat" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

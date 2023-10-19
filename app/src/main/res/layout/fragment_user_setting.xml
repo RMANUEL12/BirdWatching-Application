@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".UserSettings">
+    tools:context=".UserSetting">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -19,6 +19,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp">
 
+
         <!--    Insert Image here    -->
         <ImageView
             android:layout_width="150dp"
@@ -27,6 +28,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="30dp"/>
+
 
         <TextView
             android:id="@+id/textViewUserName"
@@ -82,11 +84,11 @@
             android:paddingStart="16dp" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_notifications"
+            android:id="@+id/btn_privacyPolicy"
             android:layout_width="match_parent"
             android:layout_height="65dp"
             android:layout_gravity="center"
-            android:text="Map Settings"
+            android:text="Privacy Policy"
             android:textColor="@color/black"
             android:background="@drawable/primary_style_button"
             android:textSize="16sp"
