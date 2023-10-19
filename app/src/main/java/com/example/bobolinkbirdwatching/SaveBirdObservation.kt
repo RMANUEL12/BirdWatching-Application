@@ -111,7 +111,7 @@ class SaveBirdObservation : AppCompatActivity() {
                     // Showing success message
                     Toast.makeText(applicationContext, "Observation Successfully Saved!", Toast.LENGTH_SHORT).show()
                 }
-                else{
+                if(selectedBirdBreed.isNotBlank()){
 
                     //copying user's location
                     val sightLocation = userLocation
