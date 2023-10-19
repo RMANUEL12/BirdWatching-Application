@@ -36,21 +36,27 @@ class BirdJournal : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        // Array of desired items - replace with user store observations
-        val mItems: Array<String> = arrayOf("One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Zero")
+//Inflating the layout for this fragment
 
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_bird_journal, container, false)
 
-        val mListView = view.findViewById<ListView>(R.id.observationList)
+//list of observations
+        val sightingsList = mutableListOf<BirdObservation>()
 
-        // Creating a ListView adapter
-        val mAdapter = ArrayAdapter<String>(requireContext(), R.layout.list_item, R.id.text_view, mItems)
+//Populating array with BirdObservations
+        val savedObservations: Array<String> = sightingsList.map { "${it.breed}- Date Spotted: ${it.dateSpotted}"}.toTypedArray()
 
-        // Setting the ListView adapter with the one created above
-        mListView.adapter = mAdapter
+        val observationList = view.findViewById<ListView>(R.id.observationList)
+
+// Creating a ListView adapter
+        val adapter = ArrayAdapter<String>(requireContext(), R.layout.list_item, R.id.text_view, savedObservations)
+
+// Setting the ListView adapter with the one created above
+        observationList.adapter = adapter
+
 
         return view
+
     }
 
     companion object {
