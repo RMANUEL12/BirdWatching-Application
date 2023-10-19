@@ -9,7 +9,7 @@
 
     <!--    Close Button    -->
     <ImageButton
-        android:id="@+id/closeLoginPage"
+        android:id="@+id/closeUpdatePage"
         android:layout_width="70dp"
         android:layout_height="100dp"
         android:src="@drawable/baseline_close_24"
@@ -86,7 +86,7 @@
 
             <!-- Enter last name text-box -->
             <EditText
-                android:id="@+id/editTextName"
+                android:id="@+id/editTextfirstName"
                 android:layout_height="55dp"
                 android:layout_width="match_parent"
                 android:layout_below="@id/text_firstname"
@@ -192,7 +192,7 @@
 
             <!-- Enter confirm password label -->
             <TextView
-                android:id="@+id/text_Confirmpassword"
+                android:id="@+id/text_ConfirmPassword"
                 android:layout_gravity="left"
                 android:layout_marginStart="20dp"
                 android:layout_height="24dp"
@@ -220,6 +220,35 @@
                 android:paddingStart="20dp"
                 android:layout_marginBottom="20dp"/>
 
+            <TextView
+                android:id="@+id/text_Area"
+                android:layout_gravity="left"
+                android:layout_marginStart="20dp"
+                android:layout_height="24dp"
+                android:layout_width="wrap_content"
+                android:text="Area"
+                android:textColor="@color/white"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/textbox_label_component"
+                android:paddingStart="10dp"
+                android:paddingRight="10dp"/>
+
+            <!-- Enter confirm password text-box -->
+            <EditText
+                android:id="@+id/editTextArea"
+                android:layout_height="55dp"
+                android:layout_width="match_parent"
+                android:layout_below="@id/text_firstname"
+                android:layout_alignLeft="@id/text_firstname"
+                android:background="@drawable/rounded_yellow_border"
+                android:hint="Your Area of Residence"
+                android:inputType="textPassword"
+                android:textColor="@color/white"
+                android:textColorHint="@android:color/white"
+                android:textSize="16sp"
+                android:paddingStart="20dp"
+                android:layout_marginBottom="1dp"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -236,17 +265,15 @@
                     android:textSize="15sp"
                     android:textStyle="bold"
                     android:textColor="#dc143c"
-                    android:layout_marginBottom="10dp"/>
+                    android:layout_marginBottom="1dp"/>
 
             </LinearLayout>
 
 
         </LinearLayout>
 
-
-
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/buttonRegister"
+            android:id="@+id/buttonUpdate"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="REGISTER"

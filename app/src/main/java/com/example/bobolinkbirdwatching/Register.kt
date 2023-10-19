@@ -18,7 +18,7 @@ class Register : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        buttonRegister = findViewById<Button>(R.id.buttonRegister)
+        buttonRegister = findViewById<Button>(R.id.buttonUpdate)
 
         buttonRegister.setOnClickListener {
 
@@ -27,7 +27,7 @@ class Register : AppCompatActivity() {
                 val email = findViewById<EditText>(R.id.editTextEmail).text.toString()
                 val passwordTemp = findViewById<EditText>(R.id.editTextPassword).text.toString()
                 val password = findViewById<EditText>(R.id.editTextConfirmPassword).text.toString()
-                val firstName = findViewById<EditText>(R.id.editTextName).text.toString()
+                val firstName = findViewById<EditText>(R.id.editTextfirstName).text.toString()
                 val surname = findViewById<EditText>(R.id.editTextSurname).text.toString()
                 val area = findViewById<EditText>(R.id.editTextArea).text.toString()
 

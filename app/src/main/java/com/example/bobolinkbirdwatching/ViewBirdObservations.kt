@@ -1,12 +1,14 @@
 package com.example.bobolinkbirdwatching
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
 
@@ -39,5 +41,16 @@ class ViewBirdObservations : AppCompatActivity() {
 
         val adapter = BirdObservationAdapter(this, sightingsList)
         observationList.adapter = adapter
+
+        val backButton = findViewById<Button>(R.id.btnReturnToMain)
+
+        backButton.setOnClickListener{
+            //Creating an Intent to navigate to the activity
+            val intent = Intent(this, MainActivity::class.java)
+
+            //Starting the activity
+            startActivity(intent)
+        }
     }
+
 }

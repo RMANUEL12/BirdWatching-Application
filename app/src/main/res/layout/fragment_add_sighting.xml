@@ -3,15 +3,82 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_700"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
     tools:context=".AddSighting">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
+    <!-- Nested LinearLayout container -->
+    <LinearLayout
+        android:id="@+id/topContent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Sighting Fragment"
-        android:textSize="26sp"
-        android:layout_gravity="center"/>
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <!--    Insert Image here    -->
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="0dp"
+            android:src="@drawable/add_sighting_hint" />
+
+        <TextView
+            android:id="@+id/textSelectBreed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:hint="Select Bird Breed"
+            android:textColor="@color/white" />
+
+
+        <Spinner
+            android:id="@+id/birdBreedSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="127dp" />
+
+        <TextView
+            android:id="@+id/textAddBreed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Add Bird Breed"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="171dp" />
+
+        <EditText
+            android:id="@+id/editTextAddBreed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Breed Name"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="190dp" />
+
+
+        <TextView
+            android:id="@+id/textLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Sighting Location: Current Location"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="235dp" />
+
+
+        <Button
+            android:id="@+id/buttonSave"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/secondary_style_button"
+            android:text="Save Sighting"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
 
 </FrameLayout>
