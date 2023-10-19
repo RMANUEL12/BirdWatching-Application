@@ -29,7 +29,7 @@ class Login : AppCompatActivity() {
 
                     //--REDIRECTING TO HOME(MAP)
                     //Creating an Intent to navigate to the activity
-//                    val intent = Intent(this, MapsActivity::class.java)
+                    val intent = Intent(this, MainActivity::class.java)
 
                     //Starting the activity
                     startActivity(intent)

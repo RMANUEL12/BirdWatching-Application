@@ -23,10 +23,6 @@ class MainActivity : AppCompatActivity() {
                     replaceFragment(AddSighting())
                     true
                 }
-//                R.id.nav_journal -> {
-//                    replaceFragment(BirdJournal())
-//                    true
-//                }
                 R.id.nav_settings -> {
                     replaceFragment(UserSettings())
                     true
