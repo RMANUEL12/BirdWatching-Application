@@ -58,6 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Manage Account Details"
+            android:textColor="@color/white"
             android:layout_marginTop="6dp" />
 
 
@@ -97,25 +98,10 @@
             android:drawableLeft="@drawable/baseline_map_24"
             android:paddingStart="16dp" />
 
+
+
+
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_termsAndConditions"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:layout_gravity="center"
-            android:text="Terms and Conditions"
-            android:textColor="@color/black"
-            android:background="@drawable/primary_style_button"
-            android:textSize="16sp"
-            android:textAllCaps="false"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="15dp"
-            android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
-            android:paddingEnd="16dp"
-            android:drawableLeft="@drawable/baseline_info_24"
-            android:paddingStart="16dp" />
-
-
-        <Button
             android:id="@+id/buttonLogOut"
             android:layout_width="match_parent"
             android:layout_height="60dp"
