@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.TextView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -16,20 +15,14 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
-
  * Use the [UserSetting.newInstance] factory method to
-
  * create an instance of this fragment.
  */
 
 class UserSetting : Fragment() {
 
-//class UserSettings : Fragment() {
+class UserSettings : Fragment() {
     private lateinit var btnUserSet: Button
-
-    private lateinit var btnLogOut: Button
-
-    private val userDetailsList = mutableListOf<UserData>()
 
 
     // TODO: Rename and change types of parameters
@@ -48,38 +41,22 @@ class UserSetting : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_user_setting, container, false)
-
-        val displayName = view.findViewById<TextView>(R.id.textViewUserName)
-        val displayEmail = view.findViewById<TextView>(R.id.textViewUserEmail)
-
-        //Populating the EditTexts with the current user's details
-        val currentUserDetails = userDetailsList[0]
-
-        displayName.text = (currentUserDetails.firstName + " " + currentUserDetails.surname)
-        displayEmail.text = (currentUserDetails.email)
+        val view = inflater.inflate(R.layout.fragment_user_settings, container, false)
 
         btnUserSet = view.findViewById(R.id.btn_userDetails)
 
         btnUserSet.setOnClickListener{
             //Creating an Intent to navigate to the activity
-            val intent = Intent(requireContext(), PersonalInformation::class.java)
+            val intent = Intent(requireContext(), Settings::class.java)
 
             //Starting the activity
             startActivity(intent)
         }
-
-        btnLogOut = view.findViewById(R.id.buttonLogOut)
-
-        btnLogOut.setOnClickListener{
-            //Creating an Intent to navigate to the activity
-            val intent = Intent(requireContext(), Login::class.java)
-
-            //Starting the activity
-            startActivity(intent)
-        }
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_user_setting, container, false)
 
         return view
+
     }
 
     companion object {
