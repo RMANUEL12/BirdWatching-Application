@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 
@@ -31,7 +30,7 @@ class Login : AppCompatActivity() {
 
                     //--REDIRECTING TO HOME(MAP)
                     //Creating an Intent to navigate to the activity
-                    val intent = Intent(this, MainActivity::class.java)
+                    val intent = Intent(this, FindBirds::class.java)
 
                     //Starting the activity
                     startActivity(intent)
@@ -65,20 +64,5 @@ class Login : AppCompatActivity() {
             //Starting the activity
             startActivity(regIntent)
         }
-
-        //Back Button(Exit) functionality
-
-        val closeButton = findViewById<ImageButton>(R.id.closePage)
-
-//Adding an OnClickListener to handle the click event
-        closeButton.setOnClickListener {
-
-            //Creating an Intent to navigate to the activity
-             val regIntent = Intent(this, StartUp::class.java)
-
-            //Starting the activity
-            startActivity(regIntent)
-        }
-
     }
 }

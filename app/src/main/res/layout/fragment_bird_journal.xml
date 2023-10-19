@@ -13,7 +13,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/dateTextView"
+            android:id="@+id/textCollection"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="My Collection"
@@ -21,12 +21,6 @@
             android:textColor="@color/white"
             android:textStyle="bold"/>
 
-        <TextView
-            android:id="@+id/breedTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Bird Breed"
-            android:textColor="@color/white"/>
 
         <ListView
             android:id="@+id/observationList"

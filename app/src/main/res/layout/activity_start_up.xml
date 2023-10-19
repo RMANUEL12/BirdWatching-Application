@@ -70,7 +70,7 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/buttonUpdate"
+            android:id="@+id/buttonRegister"
             android:layout_width="match_parent"
             android:layout_height="60dp"
                 android:text="REGISTER"

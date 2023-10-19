@@ -12,18 +12,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/dateTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Date" />
-
-        <TextView
-            android:id="@+id/breedTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Bird Breed" />
-
         <ListView
             android:id="@+id/observationList"
             android:layout_width="match_parent"

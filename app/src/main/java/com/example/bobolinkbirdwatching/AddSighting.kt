@@ -92,7 +92,8 @@ class AddSighting : Fragment() {
                     }
 
                     override fun onNothingSelected(parent: AdapterView<*>?) {
-                        // Do nothing, for now
+                        //showing message
+                        Toast.makeText(requireContext(), "Please enter a bird breed or select one.", Toast.LENGTH_SHORT).show()
                     }
                 }
 
@@ -130,30 +131,36 @@ class AddSighting : Fragment() {
                 val breed = view.findViewById<EditText>(R.id.editTextAddBreed).text.toString()
 
                 //ensuring that field is not empty
-                if (breed.isNotEmpty()){
-
-                    //copying user's location
-                    val sightLocation = userLocation
-
-                    //saving observation
-                    val sighting = BirdObservation(breed, sightLocation, sightDate)
-                    sightingsList.add(sighting)
-
-                    // Showing success message
-                    Toast.makeText(requireContext(), "Observation Successfully Saved!", Toast.LENGTH_SHORT).show()
+                if (breed.isEmpty() && selectedBirdBreed.isNullOrBlank()){
+                    // Showing message
+                    Toast.makeText(requireContext(), "Please select or enter a bird breed.", Toast.LENGTH_SHORT).show()
                 }
 
-                if(selectedBirdBreed.isNotBlank()){
+                if(selectedBirdBreed.isNotBlank() || breed.isNotEmpty()){
 
                     //copying user's location
                     val sightLocation = userLocation
 
-                    //saving observation
-                    val sighting = BirdObservation(selectedBirdBreed, sightLocation, sightDate)
-                    sightingsList.add(sighting)
+                    if(selectedBirdBreed.isNotBlank()){
+                        //saving observation
+                        val sighting = BirdObservation(selectedBirdBreed, sightLocation, sightDate)
+                        sightingsList.add(sighting)
 
-                    // Showing success message
-                    Toast.makeText(requireContext(), "Observation Successfully Saved!", Toast.LENGTH_SHORT).show()
+                        // Showing success message
+                        Toast.makeText(requireContext(), "Observation Successfully Saved!", Toast.LENGTH_SHORT).show()
+
+                    }
+
+                    if (breed.isNotEmpty()) {
+                        //saving observation
+                        val sighting = BirdObservation(selectedBirdBreed, sightLocation, sightDate)
+                        sightingsList.add(sighting)
+
+                        // Showing success message
+                        Toast.makeText(requireContext(), "Observation Successfully Saved!", Toast.LENGTH_SHORT).show()
+
+                    }
+
                 }
 
             }

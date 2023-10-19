@@ -1,11 +1,13 @@
 package com.example.bobolinkbirdwatching
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 
 // TODO: Rename parameter arguments, choose names that match
@@ -18,10 +20,13 @@ private const val ARG_PARAM2 = "param2"
  * Use the [BirdJournal.newInstance] factory method to
  * create an instance of this fragment.
  */
+
+
 class BirdJournal : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,24 +36,28 @@ class BirdJournal : Fragment() {
         }
     }
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        // Array of desired items - replace with user store observations
-        val mItems: Array<String> = arrayOf("One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Zero")
-
-        // Inflate the layout for this fragment
+        //Inflating the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_bird_journal, container, false)
 
-        val mListView = view.findViewById<ListView>(R.id.observationList)
+        //list of observations
+        val sightingsList = mutableListOf<BirdObservation>()
+
+        //Populating array with BirdObservations
+        val savedObservations: Array<String> = sightingsList.map { "${it.breed} - Date Spotted: ${it.dateSpotted}"}.toTypedArray()
+
+        val observationList = view.findViewById<ListView>(R.id.observationList)
 
         // Creating a ListView adapter
-        val mAdapter = ArrayAdapter<String>(requireContext(), R.layout.list_item, R.id.text_view, mItems)
+        val adapter = ArrayAdapter<String>(requireContext(), R.layout.list_item, R.id.text_view, savedObservations)
 
         // Setting the ListView adapter with the one created above
-        mListView.adapter = mAdapter
+        observationList.adapter = adapter
 
         return view
     }

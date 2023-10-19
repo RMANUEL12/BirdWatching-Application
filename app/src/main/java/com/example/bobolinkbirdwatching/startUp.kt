@@ -12,7 +12,7 @@ class StartUp : AppCompatActivity() {
         setContentView(R.layout.activity_start_up)
 
         val buttonLogin = findViewById<View>(R.id.buttonLogin)
-        val buttonRegister = findViewById<View>(R.id.buttonUpdate)
+        val buttonRegister = findViewById<View>(R.id.buttonRegister)
         val closePage = findViewById<View>(R.id.closePage)
 
         buttonLogin.setOnClickListener {
