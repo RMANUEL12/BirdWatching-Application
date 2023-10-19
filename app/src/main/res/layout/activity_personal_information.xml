@@ -9,7 +9,7 @@
 
     <!--    Close Button    -->
     <ImageButton
-        android:id="@+id/closeLoginPage"
+        android:id="@+id/closeUpdatePage"
         android:layout_width="70dp"
         android:layout_height="100dp"
         android:src="@drawable/baseline_close_24"
@@ -102,7 +102,7 @@
 
             <!-- Enter last name text-box -->
             <EditText
-                android:id="@+id/editTextName"
+                android:id="@+id/editTextNewName"
                 android:layout_height="55dp"
                 android:layout_width="match_parent"
                 android:layout_below="@id/text_firstname"
@@ -133,7 +133,7 @@
 
             <!-- Enter last name text-box -->
             <EditText
-                android:id="@+id/editTextSurname"
+                android:id="@+id/editTextNewSurname"
                 android:layout_height="55dp"
                 android:layout_width="match_parent"
                 android:layout_below="@id/text_firstname"
@@ -165,7 +165,7 @@
 
             <!-- Enter email text-box -->
             <EditText
-                android:id="@+id/editTextEmail"
+                android:id="@+id/editTextNewEmail"
                 android:layout_height="55dp"
                 android:layout_width="match_parent"
                 android:layout_below="@id/text_firstname"
@@ -195,7 +195,7 @@
 
             <!-- Enter password text-box -->
             <EditText
-                android:id="@+id/editTextPassword"
+                android:id="@+id/editTextNewPassword"
                 android:layout_height="55dp"
                 android:layout_width="match_parent"
                 android:layout_below="@id/text_firstname"
@@ -211,34 +211,32 @@
 
             <!-- Enter confirm password label -->
             <TextView
-                android:id="@+id/text_Confirmpassword"
+                android:id="@+id/text_Area"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
                 android:layout_gravity="left"
                 android:layout_marginStart="20dp"
-                android:layout_height="24dp"
-                android:layout_width="wrap_content"
-                android:text="Confirm Password"
-                android:textColor="@color/black"
-                android:textStyle="bold"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/textbox_label_component"
                 android:paddingStart="10dp"
-                android:paddingRight="10dp"/>
+                android:paddingRight="10dp"
+                android:text="Your Area of Residence"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
             <!-- Enter confirm password text-box -->
             <EditText
-                android:id="@+id/editTextConfirmPassword"
-                android:layout_height="55dp"
+                android:id="@+id/editTextNewArea"
                 android:layout_width="match_parent"
+                android:layout_height="55dp"
                 android:layout_below="@id/text_firstname"
                 android:layout_alignLeft="@id/text_firstname"
+                android:layout_marginBottom="20dp"
                 android:background="@drawable/rounded_yellow_border"
-                android:hint="**************"
-                android:inputType="textPassword"
+                android:paddingStart="20dp"
                 android:textColor="@color/white"
                 android:textColorHint="@android:color/white"
-                android:textSize="16sp"
-                android:paddingStart="20dp"
-                android:layout_marginBottom="20dp"/>
+                android:textSize="16sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -265,7 +263,7 @@
 
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/buttonRegister"
+            android:id="@+id/buttonUpdate"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="Update"
