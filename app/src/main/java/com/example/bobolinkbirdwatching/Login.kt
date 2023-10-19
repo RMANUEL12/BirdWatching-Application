@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 
 class Login : AppCompatActivity() {
@@ -29,7 +30,7 @@ class Login : AppCompatActivity() {
 
                     //--REDIRECTING TO HOME(MAP)
                     //Creating an Intent to navigate to the activity
-//                    val intent = Intent(this, MapsActivity::class.java)
+                    val intent = Intent(this, MainActivity::class.java)
 
                     //Starting the activity
                     startActivity(intent)
@@ -46,6 +47,22 @@ class Login : AppCompatActivity() {
                 Log.e(ContentValues.TAG, "Something went wrong, Please Try Again.")
             }
 
+        }
+
+        //Register Link Button functionality
+        val registerLinkText = findViewById<TextView>(R.id.buttonRegister)
+
+        //Making the TextView clickable
+        registerLinkText.isClickable = true
+
+        //Adding an OnClickListener to handle the click event
+        registerLinkText.setOnClickListener {
+
+            //Creating an Intent to navigate to the activity
+            val regIntent = Intent(this, Register::class.java)
+
+            //Starting the activity
+            startActivity(regIntent)
         }
     }
 }
