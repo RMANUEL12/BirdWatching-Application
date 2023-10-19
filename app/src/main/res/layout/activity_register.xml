@@ -11,7 +11,7 @@
     <ImageButton
         android:id="@+id/closeUpdatePage"
         android:layout_width="70dp"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:src="@drawable/baseline_close_24"
         android:background="@drawable/half_square_half_circle"
         android:layout_alignParentTop="true"
@@ -26,15 +26,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="5dp"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp">
 
 
-
-        <!-- Text view saying "bobolink" -->
+        <!-- Page Heading" -->
         <TextView
-            android:id="@+id/textViewBobolink"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Create an account"
@@ -46,6 +44,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="20dp"/>
 
+        <!-- Sub-Page Heading" -->
         <TextView
             android:id="@+id/textHelloMessage"
             android:layout_width="wrap_content"
@@ -67,6 +66,7 @@
             android:layout_height="wrap_content"
             android:paddingRight="20dp"
             android:paddingLeft="20dp"
+            android:layout_marginTop="5dp"
             android:orientation="vertical">
 
 
@@ -273,7 +273,7 @@
         </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/buttonUpdate"
+            android:id="@+id/buttonRegister"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="REGISTER"

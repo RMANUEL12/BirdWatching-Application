@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white"
+    android:background="@drawable/add_sighting_background"
     tools:context=".AddSighting">
 
     <!-- Nested LinearLayout container -->
@@ -30,9 +30,9 @@
             android:id="@+id/textSelectBreed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
             android:hint="Select Bird Breed"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:layout_marginTop="6dp"/>
 
 
         <Spinner
@@ -47,28 +47,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Add Bird Breed"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="171dp" />
+            android:textColor="@color/white"/>
 
         <EditText
             android:id="@+id/editTextAddBreed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Breed Name"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="190dp" />
+            android:textColor="@color/white"/>
 
 
         <TextView
             android:id="@+id/textLocation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Sighting Location: Current Location"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="235dp" />
+            android:hint="Sighting Location: Current Location" />
 
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonSave"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
