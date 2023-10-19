@@ -97,11 +97,12 @@
             android:layout_marginBottom="16dp"
             android:drawableRight="@drawable/baseline_lock_24"/>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonLogin"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="LOGIN"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:background="@drawable/secondary_style_button"
             app:layout_constraintTop_toBottomOf="@+id/inputPassword"

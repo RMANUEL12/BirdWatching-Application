@@ -2,10 +2,6 @@ package com.example.bobolinkbirdwatching
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.bobolinkbirdwatching.AddSighting
-import com.example.bobolinkbirdwatching.BirdJournal
-import com.example.bobolinkbirdwatching.HotSpots
-import com.example.bobolinkbirdwatching.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -27,10 +23,10 @@ class MainActivity : AppCompatActivity() {
                     replaceFragment(AddSighting())
                     true
                 }
-                R.id.nav_journal -> {
-                    replaceFragment(BirdJournal())
-                    true
-                }
+//                R.id.nav_journal -> {
+//                    replaceFragment(BirdJournal())
+//                    true
+//                }
                 R.id.nav_settings -> {
                     replaceFragment(UserSettings())
                     true

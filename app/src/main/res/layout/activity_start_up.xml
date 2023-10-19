@@ -56,11 +56,12 @@
 
 
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonLogin"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="LOGIN"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:background="@drawable/secondary_style_button"
             app:layout_constraintTop_toBottomOf="@+id/inputPassword"
@@ -68,11 +69,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonRegister"
             android:layout_width="match_parent"
             android:layout_height="60dp"
                 android:text="REGISTER"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:background="@drawable/primary_style_button"
             app:layout_constraintTop_toBottomOf="@+id/inputPassword"
