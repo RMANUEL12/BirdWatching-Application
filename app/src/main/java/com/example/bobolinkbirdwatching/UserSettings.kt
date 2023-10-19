@@ -1,10 +1,12 @@
 package com.example.bobolinkbirdwatching
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,6 +19,8 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class UserSettings : Fragment() {
+    private lateinit var btnUserSet: Button
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -33,8 +37,19 @@ class UserSettings : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val view = inflater.inflate(R.layout.fragment_user_settings, container, false)
+
+        btnUserSet = view.findViewById(R.id.btn_userDetails)
+
+        btnUserSet.setOnClickListener{
+            //Creating an Intent to navigate to the activity
+            val intent = Intent(requireContext(), Settings::class.java)
+
+            //Starting the activity
+            startActivity(intent)
+        }
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_settings, container, false)
+        return view
     }
 
     companion object {

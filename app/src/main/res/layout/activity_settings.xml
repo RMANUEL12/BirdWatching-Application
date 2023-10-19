@@ -13,57 +13,57 @@
         android:id="@+id/topContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp">
+        android:layout_marginBottom="400dp"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <!--    Insert Image here    -->
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/user_profile_filler_image"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="30dp"/>
+            android:layout_marginBottom="30dp"
+            android:src="@drawable/user_profile_filler_image" />
 
         <TextView
             android:id="@+id/textViewUserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
             android:text="James Maddisson"
-            android:textSize="20sp"
             android:textColor="@color/white"
-            android:layout_marginBottom="6dp"/>
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/textViewUserEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
             android:text="jamesmadisson@gmail.com"
-            android:textSize="14sp"
             android:textColor="@color/white"
-            android:layout_marginBottom="6dp"/>
+            android:textSize="14sp" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1.5dp"
-            android:background="@color/underline"
             android:layout_marginTop="6dp"
-            android:layout_marginBottom="6dp"/>
+            android:layout_marginBottom="6dp"
+            android:background="@color/underline" />
 
         <TextView
             android:id="@+id/textViewUpdateDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Manage Account Details"
-            android:layout_marginTop="6dp" />
+            android:layout_marginTop="6dp"
+            android:text="Manage Account Details" />
 
 
-
-
-        <androidx.appcompat.widget.AppCompatButton
+        <!--<androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_userDetails"
             android:layout_width="match_parent"
             android:layout_height="55dp"
@@ -78,9 +78,9 @@
             android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
             android:paddingEnd="16dp"
             android:drawableLeft="@drawable/baseline_person_24"
-            android:paddingStart="16dp" />
+            android:paddingStart="16dp" />-->
 
-        <androidx.appcompat.widget.AppCompatButton
+        <!--androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_notifications"
             android:layout_width="match_parent"
             android:layout_height="55dp"
@@ -95,36 +95,97 @@
             android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
             android:paddingEnd="16dp"
             android:drawableLeft="@drawable/baseline_map_24"
-            android:paddingStart="16dp" />
+            android:paddingStart="16dp" />-->
 
-<!--        <androidx.appcompat.widget.AppCompatButton-->
-<!--            android:id="@+id/btn_termsAndConditions"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="55dp"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:text="Terms and Conditions"-->
-<!--            android:textColor="@color/black"-->
-<!--            android:background="@drawable/primary_style_button"-->
-<!--            android:textSize="16sp"-->
-<!--            android:textAllCaps="false"-->
-<!--            android:layout_marginTop="30dp"-->
-<!--            android:layout_marginBottom="15dp"-->
-<!--            android:drawableRight="@drawable/baseline_arrow_forward_ios_24"-->
-<!--            android:paddingEnd="16dp"-->
-<!--            android:drawableLeft="@drawable/baseline_info_24"-->
-<!--            android:paddingStart="16dp" />-->
+        <!--        <androidx.appcompat.widget.AppCompatButton-->
+        <!--            android:id="@+id/btn_termsAndConditions"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="55dp"-->
+        <!--            android:layout_gravity="center"-->
+        <!--            android:text="Terms and Conditions"-->
+        <!--            android:textColor="@color/black"-->
+        <!--            android:background="@drawable/primary_style_button"-->
+        <!--            android:textSize="16sp"-->
+        <!--            android:textAllCaps="false"-->
+        <!--            android:layout_marginTop="30dp"-->
+        <!--            android:layout_marginBottom="15dp"-->
+        <!--            android:drawableRight="@drawable/baseline_arrow_forward_ios_24"-->
+        <!--            android:paddingEnd="16dp"-->
+        <!--            android:drawableLeft="@drawable/baseline_info_24"-->
+        <!--            android:paddingStart="16dp" />-->
 
+        <EditText
+            android:id="@+id/editTextNewArea"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_below="@id/text_firstname"
+            android:layout_alignLeft="@id/text_firstname"
+            android:background="@drawable/rounded_yellow_border"
+            android:hint=""
+            android:paddingStart="20dp"
+            android:textColor="@color/white"
+            android:textColorHint="@android:color/white"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="-16dp"
+            tools:layout_editor_absoluteY="330dp" />
+
+        <EditText
+            android:id="@+id/editTextNewPassword"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_below="@id/text_firstname"
+            android:layout_alignLeft="@id/text_firstname"
+            android:background="@drawable/rounded_yellow_border"
+            android:hint=""
+            android:paddingStart="20dp"
+            android:textColor="@color/white"
+            android:textColorHint="@android:color/white"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="-16dp"
+            tools:layout_editor_absoluteY="259dp" />
+
+        <EditText
+            android:id="@+id/editTextNewEmail"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_below="@id/text_firstname"
+            android:layout_alignLeft="@id/text_firstname"
+            android:background="@drawable/rounded_yellow_border"
+            android:hint=""
+            android:paddingStart="20dp"
+            android:textColor="@color/white"
+            android:textColorHint="@android:color/white"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="191dp" />
 
         <Button
-            android:id="@+id/buttonLogOut"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="Log Out"
-            android:textColor="@color/black"
-            android:background="@drawable/secondary_style_button"
+            android:id="@+id/buttonSaveSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save Changes"
+            tools:layout_editor_absoluteX="141dp"
+            tools:layout_editor_absoluteY="627dp" />
+
+        <Button
+            android:id="@+id/btnReturnToUserSet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            tools:layout_editor_absoluteX="141dp"
+            tools:layout_editor_absoluteY="627dp" />
+
+
+        <!--<Button-->
+        <!--    android:id="@+id/buttonLogOut"-->
+        <!--    android:layout_width="match_parent"-->
+        <!--    android:layout_height="60dp"-->
+        <!--    android:text="Log Out"-->
+        <!--   android:textColor="@color/black"-->
+        <!--    android:background="@drawable/secondary_style_button"
             android:layout_marginTop="48dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent" />-->
 
     </LinearLayout>
 
