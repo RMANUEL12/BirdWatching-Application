@@ -46,6 +46,7 @@ class MaxDistancePreference(
                             if (location != null) {
                                 val userLocation = LatLng(location.latitude, location.longitude)
                                 mapActivity.fetchAndDisplayMarkers(userLocation)
+                                mapActivity.fetchAndDisplayObservations()
                             }
                         }
                     }catch (e: SecurityException){

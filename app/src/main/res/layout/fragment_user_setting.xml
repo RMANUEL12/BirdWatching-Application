@@ -20,7 +20,6 @@
         android:layout_marginLeft="20dp">
 
 
-        <!--    Insert Image here    -->
         <ImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
@@ -29,24 +28,29 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="30dp"/>
 
+        <!-- First name + Last name -->
 
         <TextView
             android:id="@+id/textViewUserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="James Maddisson"
+            android:text="Name Surname"
             android:textSize="20sp"
             android:textColor="@color/white"
             android:layout_marginBottom="6dp"/>
+
+        <!-- Email Address -->
 
         <TextView
             android:id="@+id/textViewUserEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="jamesmadisson@gmail.com"
+            android:text="emailaddress@gmail.com"
             android:textSize="14sp"
             android:textColor="@color/white"
             android:layout_marginBottom="6dp"/>
+
+        <!-- Divider -->
 
         <View
             android:layout_width="match_parent"
@@ -54,6 +58,8 @@
             android:background="@color/underline"
             android:layout_marginTop="6dp"
             android:layout_marginBottom="6dp"/>
+
+        <!-- Hint message -->
 
         <TextView
             android:id="@+id/textViewUpdateDetails"
@@ -63,8 +69,7 @@
             android:textColor="@color/white"
             android:layout_marginTop="6dp" />
 
-
-
+        <!-- Personal Information button -->
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_userDetails"
@@ -83,9 +88,7 @@
             android:drawableLeft="@drawable/baseline_person_24"
             android:paddingStart="16dp" />
 
-
-
-
+        <!-- Logout button -->
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonLogOut"

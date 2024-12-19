@@ -20,7 +20,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp">
 
-        <!--    Insert Image here    -->
+        <!--  Image  -->
         <ImageView
             android:layout_width="300dp"
             android:layout_height="300dp"
@@ -28,6 +28,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="0dp" />
 
+        <!-- Hint message -->
         <TextView
             android:id="@+id/textSelectBreed"
             android:layout_width="match_parent"
@@ -36,7 +37,7 @@
             android:textColor="@color/white"
             android:layout_marginTop="6dp"/>
 
-
+        <!-- Dropdown spinner -->
         <Spinner
             android:id="@+id/birdBreedSpinner"
             android:layout_width="match_parent"
@@ -44,6 +45,7 @@
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="127dp" />
 
+        <!-- Hint message -->
         <TextView
             android:id="@+id/textAddBreed"
             android:layout_width="match_parent"
@@ -51,6 +53,8 @@
             android:hint="Add Bird Breed"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="171dp" />
+
+        <!-- Enter breed name text-box -->
 
         <EditText
             android:id="@+id/editTextAddBreed"
@@ -60,6 +64,7 @@
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="190dp" />
 
+        <!-- Hint message -->
 
         <TextView
             android:id="@+id/textLocation"
@@ -69,8 +74,7 @@
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="235dp" />
 
-
-
+        <!-- Save Sighting button -->
         <Button
             android:id="@+id/buttonSave"
             android:layout_width="match_parent"

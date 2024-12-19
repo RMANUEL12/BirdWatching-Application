@@ -3,8 +3,10 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@color/dark_grey"
+    android:background="@color/white"
     android:padding="10dp">
+
+    <!-- Bird Name -->
 
     <TextView
         android:id="@+id/birdName"
@@ -13,9 +15,41 @@
         android:textStyle="bold"
         android:textSize="16sp"
         android:paddingBottom="5dp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:text="Bird Name Placeholder" />
 
+    <!-- Location Distance -->
+                                                                                          -->
+    <TextView
+        android:id="@+id/distanceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Distance: Placeholde"
+        android:textColor="@color/black"
+        android:layout_marginTop="5dp"/>
+
+    <!-- Location Duration -->
+
+    <TextView
+        android:id="@+id/durationText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Duration: Placeholde"
+        android:textColor="@color/black"
+        android:layout_marginTop="5dp"/>
+
+    <!-- Arrival Time -->
+
+    <TextView
+        android:id="@+id/arrivalTimeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Arrival Time: Placeholde"
+        android:textColor="@color/black"
+        android:layout_marginTop="5dp"/>
+
+    <!-- Get Directions button -->
+                                                                                          -->
     <Button
         android:id="@+id/getDirectionsButton"
         android:layout_width="wrap_content"
@@ -25,6 +59,7 @@
         android:text="Get Directions"
         android:textStyle="bold"
         android:paddingRight="25dp"
-        android:paddingLeft="25dp"/>
+        android:paddingLeft="25dp"
+        android:layout_marginTop="20dp"/>
 
 </LinearLayout>

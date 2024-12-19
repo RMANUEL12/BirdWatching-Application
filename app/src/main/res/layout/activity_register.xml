@@ -60,6 +60,7 @@
             android:layout_marginBottom="20dp"/>
 
 
+        <!-- Textboxes Layout -->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -78,7 +79,8 @@
                 android:layout_height="24dp"
                 android:layout_width="wrap_content"
                 android:text="First Name"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
+                android:textStyle="bold"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/textbox_label_component"
                 android:paddingStart="10dp"
@@ -108,7 +110,8 @@
                 android:layout_height="24dp"
                 android:layout_width="wrap_content"
                 android:text="Last Name"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
+                android:textStyle="bold"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/textbox_label_component"
                 android:paddingStart="10dp"
@@ -139,7 +142,8 @@
                 android:layout_width="wrap_content"
                 android:text="Email"
                 android:contentDescription="email address"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
+                android:textStyle="bold"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/textbox_label_component"
                 android:paddingStart="10dp"
@@ -161,20 +165,24 @@
                 android:layout_marginBottom="20dp"/>
 
             <!-- Enter password label -->
+
+            <!-- Enter password text-box -->
             <TextView
                 android:id="@+id/text_password"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
                 android:layout_gravity="left"
                 android:layout_marginStart="20dp"
-                android:layout_height="24dp"
-                android:layout_width="wrap_content"
-                android:text="Password"
-                android:textColor="@color/white"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/textbox_label_component"
                 android:paddingStart="10dp"
-                android:paddingRight="10dp"/>
+                android:paddingRight="10dp"
+                android:text="Password"
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
 
             <!-- Enter password text-box -->
+
             <EditText
                 android:id="@+id/editTextPassword"
                 android:layout_height="55dp"
@@ -198,7 +206,8 @@
                 android:layout_height="24dp"
                 android:layout_width="wrap_content"
                 android:text="Confirm Password"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
+                android:textStyle="bold"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/textbox_label_component"
                 android:paddingStart="10dp"
@@ -220,6 +229,8 @@
                 android:paddingStart="20dp"
                 android:layout_marginBottom="20dp"/>
 
+            <!-- Enter area label -->
+
             <TextView
                 android:id="@+id/text_Area"
                 android:layout_gravity="left"
@@ -227,13 +238,14 @@
                 android:layout_height="24dp"
                 android:layout_width="wrap_content"
                 android:text="Area"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
+                android:textStyle="bold"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/textbox_label_component"
                 android:paddingStart="10dp"
                 android:paddingRight="10dp"/>
 
-            <!-- Enter confirm password text-box -->
+            <!-- Enter area text-box -->
             <EditText
                 android:id="@+id/editTextArea"
                 android:layout_height="55dp"
@@ -272,6 +284,8 @@
 
         </LinearLayout>
 
+        <!-- Register Button -->
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonRegister"
             android:layout_width="match_parent"
@@ -295,6 +309,8 @@
             app:layout_constraintTop_toBottomOf="@+id/topContent"
             >
 
+            <!-- Hint Message -->
+
             <TextView
                 android:id="@+id/textRegisterHint"
                 android:layout_width="wrap_content"
@@ -309,6 +325,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/textViewBobolink"
                 android:layout_marginTop="18dp"
                 android:layout_marginBottom="20dp"/>
+
+            <!-- Login Link -->
 
             <TextView
                 android:id="@+id/buttonLogin"

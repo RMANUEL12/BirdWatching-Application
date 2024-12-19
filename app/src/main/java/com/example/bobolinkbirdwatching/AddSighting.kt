@@ -1,8 +1,7 @@
 package com.example.bobolinkbirdwatching
 
-import android.Manifest
 import android.content.ContentValues
-import android.content.pm.PackageManager
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -15,13 +14,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import com.google.android.gms.location.LocationServices
-import com.google.android.gms.maps.GoogleMap
-import com.google.maps.model.LatLng
+import com.google.firebase.database.DatabaseReference
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import com.google.firebase.database.FirebaseDatabase
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -38,11 +35,18 @@ class AddSighting : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
-    private val sightingsList = mutableListOf<BirdObservation>()
-    private lateinit var userLocation: String
-    private lateinit var selectedBirdBreed: String
-    private lateinit var mMap: GoogleMap
+    private var userLocation: String = ""
+    private var user: String = ""
+    private var selectedBirdBreed: String = ""
 
+    // Storing a reference to the context
+    private lateinit var fragmentContext: Context
+
+    // Save Button
+    private lateinit var buttonSave : Button
+
+    //Database reference
+    private lateinit var databaseRef: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,20 +61,32 @@ class AddSighting : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        // Initialize the DatabaseReference
+        databaseRef = FirebaseDatabase.getInstance().reference
+
+        // Store the context reference
+        fragmentContext = requireContext()
+
         val view = inflater.inflate(R.layout.fragment_add_sighting, container, false)
 
-        val buttonSave = view.findViewById<Button>(R.id.buttonSave)
+        buttonSave = view.findViewById<Button>(R.id.buttonSave)
 
         //Getting a reference to the Spinner
         val birdSpinner = view.findViewById<Spinner>(R.id.birdBreedSpinner)
 
         //Creating an ArrayAdapter with a list of bird breeds
-        //https://birdwatchinghq.com/birds-of-south-africa/
-        val birdBreeds = arrayOf("African Fish Eagle","African Penguin", "Blue Crane", "Southern Yellow-billed Hornbill",
-            "Lilac-breasted Roller", "Secretarybird", "Southern Red Bishop", "Greater Flamingo", "African Hoopoe",
-            "Cape Glossy Starling", "Cape Weaver", "Cape Canary", "Cape Robin-Chat", "Hadeda Ibis", "Knysna Turaco",
-            "Egyptian Goose", "Helmeted Guineafowl", "Black-collared Barbet", "Yellow-billed Duck", "African Sacred Ibis" ,
-            "Southern Masked Weaver","Parrot", "Eagle", "Sparrow", "Ostrich", "Hummingbird")
+        val birdBreeds = arrayOf(
+            "African Fish Eagle", "African Penguin", "Blue Crane", "Bobolink",
+            "Southern Yellow-billed Hornbill", "Lilac-breasted Roller", "Secretarybird",
+            "Southern Red Bishop", "Greater Flamingo", "African Hoopoe", "Cape Glossy Starling",
+            "Cape Weaver", "Cape Canary", "Cape Robin-Chat", "Hadeda Ibis", "Knysna Turaco",
+            "Egyptian Goose", "Helmeted Guineafowl", "Black-collared Barbet", "Yellow-billed Duck",
+            "African Sacred Ibis", "Southern Masked Weaver", "Parrot", "Eagle", "Sparrow",
+            "Ostrich", "Hummingbird", "African Grey Hornbill", "Yellow-throated Longclaw",
+            "African Jacana", "Red-eyed Dove", "White-backed Vulture", "African Spoonbill", "Pied Crow",
+            "Little Swift", "Fork-tailed Drongo", "African Pipit", "Crowned Hornbill",
+            "Pied Kingfisher", "Malachite Kingfisher", "Southern Ground Hornbill"
+        )
 
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, birdBreeds)
 
@@ -82,99 +98,92 @@ class AddSighting : Fragment() {
 
         //Save button functionality
         buttonSave.setOnClickListener {
+
             try{
                 // Set a listener to respond to item selection
                 birdSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                        //saving selection
+                        // Saving selection
                         selectedBirdBreed = birdSpinner.getItemAtPosition(position).toString()
-
                     }
 
                     override fun onNothingSelected(parent: AdapterView<*>?) {
-                        //showing message
-                        Toast.makeText(requireContext(), "Please enter a bird breed or select one.", Toast.LENGTH_SHORT).show()
+                        // Setting value to null
+                        selectedBirdBreed = ""
                     }
                 }
-
                 //getting the current date
                 val currentDate = LocalDate.now()
 
                 //formatting the date
                 val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-                val sightDate = currentDate.format(formatter)
+                val sightDate = currentDate.format(formatter).toString()
 
-                //getting the user's current location
-                if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                    mMap.isMyLocationEnabled = true
+                //Session reference
+                val userSession = UserSession(fragmentContext)
 
-                    val fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
-                    fusedLocationClient.lastLocation.addOnSuccessListener { location ->
-                        if (location != null) {
-                            //saving location
-                            userLocation = LatLng(location.latitude, location.longitude).toString()
-                        }
-                        if (location == null){
-                                ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-                                    SaveBirdObservation.REQUEST_LOCATION_PERMISSION_CODE
-                                )
-                        }
-                    }
-                }
-                else {
-                    ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-                        SaveBirdObservation.REQUEST_LOCATION_PERMISSION_CODE
-                    )
-                }
+                //Getting user's location
+                userLocation = userSession.userLocation.toString()
 
-                //saving input for new breed
-                val breed = view.findViewById<EditText>(R.id.editTextAddBreed).text.toString()
+                //Getting ID of the logged user
+                user = userSession.userID.toString()
 
-                //ensuring that field is not empty
-                if (breed.isEmpty() && selectedBirdBreed.isNullOrBlank()){
+                // Saving input for new breed
+                val breed = view.findViewById<EditText>(R.id.editTextAddBreed)?.text.toString()
+
+                // Ensuring that both fields are not empty
+                if (breed.isEmpty() && selectedBirdBreed.isNullOrEmpty()){
                     // Showing message
-                    Toast.makeText(requireContext(), "Please select or enter a bird breed.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Observation Requires Details. Please select or enter a bird breed.", Toast.LENGTH_SHORT).show()
                 }
+                else{
+                    // Checking if breed was selected
+                    if(selectedBirdBreed != ""){ // Saving input if found
 
-                if(selectedBirdBreed.isNotBlank() || breed.isNotEmpty()){
+                        //Creating unique id
+                        val id = databaseRef.push().key
 
-                    //copying user's location
-                    val sightLocation = userLocation
-
-                    if(selectedBirdBreed.isNotBlank()){
                         //saving observation
-                        val sighting = BirdObservation(selectedBirdBreed, sightLocation, sightDate)
-                        sightingsList.add(sighting)
+                        val sighting = BirdObservation(id, user, selectedBirdBreed, userLocation, sightDate)
+                        databaseRef.child("tbl_sightings").child(id.toString()).setValue(sighting);
 
                         // Showing success message
                         Toast.makeText(requireContext(), "Observation Successfully Saved!", Toast.LENGTH_SHORT).show()
 
                     }
+                    else{
 
-                    if (breed.isNotEmpty()) {
-                        //saving observation
-                        val sighting = BirdObservation(selectedBirdBreed, sightLocation, sightDate)
-                        sightingsList.add(sighting)
+                        // Checking if breed was typed in
+                        if(breed.isNotEmpty()){ // Saving input if found
 
-                        // Showing success message
-                        Toast.makeText(requireContext(), "Observation Successfully Saved!", Toast.LENGTH_SHORT).show()
+                            //Creating unique id
+                            val id = databaseRef.push().key
 
+                            //Saving observation to database
+                            val sighting = BirdObservation(id, user, breed, userLocation, sightDate)
+                            databaseRef.child("tbl_sightings").child(id.toString()).setValue(sighting);
+
+                            // Showing success message
+                            Toast.makeText(requireContext(), "Observation Successfully Saved!", Toast.LENGTH_SHORT).show()
+
+                        }
                     }
-
                 }
-
             }
-            //error handling
+            // Error handling
             catch(e: Exception){
 
-                //error message
-                Log.e(ContentValues.TAG, "Something went wrong, Please Try Again.")
+                // Error message
+                Log.e(ContentValues.TAG, "Error adding sighting: ${e.message}")
+                Toast.makeText(requireContext(), "Something went wrong, Please Try Again.", Toast.LENGTH_SHORT).show()
             }
         }
         return view
     }
 
     companion object {
+        const val REQUEST_LOCATION_PERMISSION_CODE = 1001
+
         /**
          * Use this factory method to create a new instance of
          * this fragment using the provided parameters.
@@ -183,7 +192,6 @@ class AddSighting : Fragment() {
          * @param param2 Parameter 2.
          * @return A new instance of fragment AddSighting.
          */
-        const val REQUEST_LOCATION_PERMISSION_CODE = 1001
 
         // TODO: Rename and change types and number of parameters
         @JvmStatic

@@ -1,8 +1,9 @@
 package com.example.bobolinkbirdwatching
 
 data class BirdObservation (
-    val breed: String,
-    val sightLocation: String,
-    val dateSpotted: String,
-
+    val id: String?="",
+    val user: String?="",
+    val breed: String?="",
+    var sightLocation: String?="",
+    var dateSpotted: String?=""
 )

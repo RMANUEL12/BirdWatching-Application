@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "8945427615",
+    "firebase_url": "https://bobolink-a2a13-default-rtdb.firebaseio.com",
+    "project_id": "bobolink-a2a13",
+    "storage_bucket": "bobolink-a2a13.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:8945427615:android:a1d5cb105af12b5a85aeaa",
+        "android_client_info": {
+          "package_name": "com.example.bobolinkbirdwatching"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-lb8N6V_7hoYFXu2dEEvzx9MkibY-8Og"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

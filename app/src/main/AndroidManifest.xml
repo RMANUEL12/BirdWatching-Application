@@ -19,7 +19,7 @@
         <activity
             android:name=".MapsActivity"
             android:exported="false"
-            android:label="@string/title_activity_maps"
+            android:label="@string/app_name"
             android:theme="@style/Theme.AppCompat" />
         <activity
             android:name=".PersonalInformation"
@@ -39,7 +39,8 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="${MAPS_API_KEY}" /> <!-- <activity -->
+            android:value="${MAPS_API_KEY}" />
+        <!-- <activity -->
         <!-- android:name=".MapsActivity" -->
         <!-- android:exported="true" -->
         <!-- android:label="@string/title_activity_maps" -->
@@ -59,11 +60,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ViewBirdObservations"
-            android:exported="true"
-            android:label="ViewBirdObservations"
-            android:theme="@style/Theme.AppCompat" />
         <activity
             android:name=".SaveBirdObservation"
             android:exported="true"

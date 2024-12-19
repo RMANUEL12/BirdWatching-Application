@@ -32,7 +32,7 @@
         android:layout_marginLeft="20dp">
 
 
-<!--    Insert Image here    -->
+<!-- Logo Image -->
         <ImageView
             android:layout_width="350dp"
         android:layout_height="350dp"
@@ -40,6 +40,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp" />
 
+        <!-- App Slogan -->
         <TextView
             android:id="@+id/textHelloMessage"
             android:layout_width="wrap_content"
@@ -55,7 +56,7 @@
             android:paddingLeft="64dp"/>
 
 
-
+        <!-- Login button -->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonLogin"
             android:layout_width="match_parent"
@@ -69,6 +70,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
+        <!-- Register button -->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonRegister"
             android:layout_width="match_parent"
@@ -83,12 +85,6 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
 
-
-
-
     </LinearLayout>
-
-
-
 
 </RelativeLayout>

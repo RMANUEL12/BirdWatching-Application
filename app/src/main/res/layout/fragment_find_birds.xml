@@ -18,41 +18,18 @@
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Home"
-            android:textColor="@color/yellow"
-            android:textStyle="bold"
-            android:textSize="26sp"
-            android:layout_gravity="left"/>
-
-    </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1.5dp"
-            android:background="@color/white"
-            android:layout_marginTop="6dp"
-            android:layout_marginBottom="38dp"/>
 
 
-        <!--    Insert Image here    -->
+        <!-- Image -->
         <ImageView
             android:layout_width="350dp"
-            android:layout_height="350dp"
-            android:src="@drawable/detective_bobo"
+            android:layout_height="340dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/detective_bobo" />
+
+        <!-- Welcome Message -->
 
         <TextView
             android:layout_width="wrap_content"
@@ -64,10 +41,13 @@
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"/>
 
+        <!-- Tip Message -->
+
         <TextView
+            android:id="@+id/tvDailyTip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Begin your exploration and open the map to find birds."
+            android:text=""
             android:textColor="@color/yellow"
             android:textStyle="bold"
             android:textSize="16sp"
@@ -76,7 +56,10 @@
             android:layout_marginBottom="20dp"
             android:layout_gravity="center"
             android:gravity="center"/>
+        <!--android:text="Begin your exploration and open the map to find birds."-->
 
+
+        <!-- Open Map button -->
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonOpenMap"

@@ -7,7 +7,7 @@
     android:background="#000000"
     tools:context=".Login">
 
-    <!--    Close Button    -->
+    <!-- Close Page button -->
     <ImageButton
         android:id="@+id/closePage"
         android:layout_width="70dp"
@@ -30,7 +30,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp">
 
-        <!-- Text view saying "bobolink" -->
+        <!-- Page Heading -->
         <TextView
             android:id="@+id/textViewBobolink"
             android:layout_width="wrap_content"
@@ -43,6 +43,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="30dp"/>
+
+        <!-- Page Sub-Heading -->
 
         <TextView
             android:id="@+id/textHelloMessage"
@@ -97,6 +99,7 @@
             android:layout_marginBottom="16dp"
             android:drawableRight="@drawable/baseline_lock_24"/>
 
+        <!-- Login button -->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonLogin"
             android:layout_width="match_parent"
@@ -120,6 +123,7 @@
         app:layout_constraintTop_toBottomOf="@+id/topContent"
         >
 
+        <!-- Register Hint -->
         <TextView
             android:id="@+id/textRegisterHint"
             android:layout_width="wrap_content"
@@ -132,6 +136,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewBobolink" />
+
+        <!-- Register Link -->
 
         <TextView
             android:id="@+id/buttonRegister"
@@ -163,6 +169,8 @@
             app:layout_constraintTop_toBottomOf="@+id/topContent"
             >
 
+            <!-- Divider Left -->
+
             <View
                 android:layout_width="80dp"
                 android:layout_height="1dp"
@@ -179,6 +187,8 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"/>
 
+            <!-- Divider Right -->
+
             <View
                 android:layout_width="80dp"
                 android:layout_height="1dp"
@@ -188,6 +198,7 @@
 
         </LinearLayout>
 
+        <!-- SSO login hint -->
         <TextView
             android:id="@+id/textLoginHint"
             android:layout_width="200dp"
@@ -204,6 +215,8 @@
             android:layout_marginBottom="20dp"
             android:gravity="center" />
 
+        <!-- Login Options LinearLayout -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -212,6 +225,8 @@
             android:layout_marginBottom="20dp"
             android:gravity="center"
             app:layout_constraintTop_toBottomOf="@+id/topContent">
+
+            <!-- Apple Login -->
 
             <ImageButton
                 android:id="@+id/appleLogin"
@@ -224,6 +239,8 @@
                 android:contentDescription="Apple Login Button"
             />
 
+            <!-- Google Login -->
+
             <ImageButton
                 android:id="@+id/googleLogin"
                 android:layout_width="70dp"
@@ -234,6 +251,8 @@
                 android:text=""
                 android:contentDescription="Google Login Button"
                 />
+
+            <!-- Facebook Login -->
 
             <ImageButton
                 android:id="@+id/facebookLogin"

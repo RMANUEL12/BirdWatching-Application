@@ -1,14 +1,23 @@
 package com.example.bobolinkbirdwatching
 
+import android.content.ContentValues
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.Query
+import com.google.firebase.database.ValueEventListener
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,6 +36,14 @@ class BirdJournal : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    // Database Reference
+    private lateinit var databaseRef: DatabaseReference
+
+    // Listview object
+    private lateinit var listView: ListView
+
+    // Store a reference to the context
+    private lateinit var fragmentContext: Context
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,24 +59,72 @@ class BirdJournal : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        //Inflating the layout for this fragment
+        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_bird_journal, container, false)
 
-        //list of observations
-        val sightingsList = mutableListOf<BirdObservation>()
+        // Initialize the DatabaseReference
+        databaseRef = FirebaseDatabase.getInstance().getReference("tbl_sightings")
+        listView = view.findViewById(R.id.observationList)
 
-        //Populating array with BirdObservations
-        val savedObservations: Array<String> = sightingsList.map { "${it.breed} - Date Spotted: ${it.dateSpotted}"}.toTypedArray()
-
-        val observationList = view.findViewById<ListView>(R.id.observationList)
-
-        // Creating a ListView adapter
-        val adapter = ArrayAdapter<String>(requireContext(), R.layout.list_item, R.id.text_view, savedObservations)
-
-        // Setting the ListView adapter with the one created above
-        observationList.adapter = adapter
+        // Store the context reference
+        fragmentContext = requireContext()
 
         return view
+
+//        //Inflating the layout for this fragment
+//        val view = inflater.inflate(R.layout.fragment_bird_journal, container, false)
+//
+//        //list of observations
+//        val sightingsList = mutableListOf<BirdObservation>()
+//
+//        //Populating array with BirdObservations
+//        val savedObservations: Array<String> = sightingsList.map { "${it.breed} - Date Spotted: ${it.dateSpotted}"}.toTypedArray()
+//
+//        val observationList = view.findViewById<ListView>(R.id.observationList)
+//
+//        // Creating a ListView adapter
+//        val adapter = ArrayAdapter<String>(requireContext(), R.layout.list_item, R.id.text_view, savedObservations)
+//
+//        // Setting the ListView adapter with the one created above
+//        observationList.adapter = adapter
+//
+//        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Create an instance of UserSession
+        val userSession = UserSession(fragmentContext)
+
+        // ID of the user currently logged in
+        val id = userSession.userID
+
+        val query: Query = databaseRef.orderByChild("user").equalTo(id)
+
+        query.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                val sightingList = mutableListOf<BirdObservation>()
+
+                for (sightingSnapshot in snapshot.children) {
+                    val sighting = sightingSnapshot.getValue(BirdObservation::class.java)
+                    if (sighting != null) {
+                        sightingList.add(sighting)
+                    }
+                }
+
+                // Create and set the adapter
+                val adapter = ObservationListAdapter(fragmentContext, sightingList)
+                listView.adapter = adapter
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Logging Error
+                Log.e(ContentValues.TAG, "JOURNAL WAS NOT LOADED CORRECTLY. CHECK THIS!")
+                Toast.makeText(requireContext(), "Something went wrong, Please Try Again.", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     companion object {

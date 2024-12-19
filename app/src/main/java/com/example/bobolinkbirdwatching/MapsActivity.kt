@@ -2,14 +2,19 @@ package com.example.bobolinkbirdwatching
 
 import CustomInfoWindowAdapter
 import android.Manifest
+import android.content.ContentValues
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.Resources
 import android.graphics.Color
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.Switch
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -23,8 +28,17 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.example.bobolinkbirdwatching.databinding.ActivityMapsBinding
 import com.google.android.gms.location.LocationServices
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.android.gms.maps.model.MapStyleOptions
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.Polyline
 import com.google.android.gms.maps.model.PolylineOptions
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.Query
+import com.google.firebase.database.ValueEventListener
 import com.google.maps.DirectionsApi
 import com.google.maps.DirectionsApiRequest
 import com.google.maps.GeoApiContext
@@ -37,6 +51,9 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -50,6 +67,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private val maxDistancePreference by lazy { MaxDistancePreference(this, metricImperialPreference, this) }
     private lateinit var eBirdApiService: EBirdApiService
     private var currentPolyline: Polyline? = null // Add this as a property
+    private lateinit var databaseRef: DatabaseReference
+    private val apiHotspotMarkers = mutableListOf<Marker>()
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,6 +94,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             maxDistancePreference.showMaxDistanceDialog()
         }
 
+        val returnButton: Button = findViewById(R.id.btn_privacyPolicy)
+        returnButton.setOnClickListener { val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent) }
+
 
 
         val retrofit = Retrofit.Builder()
@@ -81,6 +106,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             .build()
 
         eBirdApiService = retrofit.create(EBirdApiService::class.java)
+        // Initialize the DatabaseReference
+        databaseRef = FirebaseDatabase.getInstance().getReference("tbl_sightings")
     }
 
     //------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -117,13 +144,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-
-        // Set the custom info window adapter
-        val customInfoWindowAdapter = CustomInfoWindowAdapter(this)
-        mMap.setInfoWindowAdapter(customInfoWindowAdapter)
-
         mMap.uiSettings.isZoomControlsEnabled = true
-
+        setMapStyle(mMap)
+        // Check for location permission
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             mMap.isMyLocationEnabled = true
 
@@ -131,9 +154,27 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             fusedLocationClient.lastLocation.addOnSuccessListener { location ->
                 if (location != null) {
                     val userLocation = LatLng(location.latitude, location.longitude)
+
+                    val userSession = UserSession(this)
+
+                    // Setting the user email when the user logs in
+                    userSession.userLocation = userLocation.toString()
+
+                    // Create an instance of CustomInfoWindowAdapter with the current location
+                    val customInfoWindowAdapter = CustomInfoWindowAdapter(this, userLocation)
+                    mMap.setInfoWindowAdapter(customInfoWindowAdapter)
+
+
+
+
                     fetchAndDisplayMarkers(userLocation)
 
+                    // Retrieve and display the bird observations
+                    fetchAndDisplayObservations()
+
+
                     mMap.setOnInfoWindowClickListener { marker ->
+
                         // Handle info window click to show directions here
                         val selectedHotspotLocation = marker.position // Get the selected hotspot's location
                         val apiKey = "AIzaSyAsE1a23gMR3H3-vErMpPMOSxVWgCg_2Rs" // Replace with your API key
@@ -148,6 +189,78 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val africa = LatLng(-33.9, 18.4)
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(africa, 4.0f))
     }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+     fun fetchAndDisplayObservations() {
+        // Assuming 'userSession.userID' holds the ID of the logged-in user
+        val userSession = UserSession(this)
+        val userId = userSession.userID
+        val query: Query = databaseRef.orderByChild("user").equalTo(userId)
+
+        query.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                Log.d("MapsActivity", "onDataChange called with snapshot: $snapshot")
+
+                //mMap.clear() // Clear existing markers before adding new ones
+
+                for (sightingSnapshot in snapshot.children) {
+                    val sighting = sightingSnapshot.getValue(BirdObservation::class.java)
+                    sighting?.sightLocation?.let { location ->
+                        // Attempt to extract the lat/lng part and handle potential nullability
+                        val locationString = location.split("lat/lng: ")[1].trim('(', ')')
+                        val locationParts = locationString.split(",").map { it.trim() }
+                        if (locationParts.size == 2) {
+                            val latitude = locationParts[0].toDoubleOrNull()
+                            val longitude = locationParts[1].toDoubleOrNull()
+
+                            Log.d("MapsActivity", "Adding marker at: lat=$latitude, lng=$longitude")
+
+                            // If latitude and longitude were successfully parsed, add the marker
+                            if (latitude != null && longitude != null) {
+                                val observationLatLng = LatLng(latitude, longitude)
+                                mMap.addMarker(
+                                    MarkerOptions()
+                                        .position(observationLatLng)
+                                        .title(sighting.breed) // Use 'breed' as title for marker
+                                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)) // Set marker color to yellow
+                                )
+                            }
+                        }
+                    }
+
+
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("MapsActivity", "onCancelled called with error: ${error.message}")
+                Log.e(ContentValues.TAG, "Failed to read sightings from database", error.toException())
+                Toast.makeText(this@MapsActivity, "Failed to load observations.", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+    private fun setMapStyle(map: GoogleMap){
+        try{
+            val success = map.setMapStyle(
+                MapStyleOptions.loadRawResourceStyle(
+                this,
+                R.raw.map_style
+            ))
+            if (!success){
+                Log.e("Style", "Style parsing has Failed")
+            }
+        }catch (e: Resources.NotFoundException){
+            Log.e("Style", "Can't find Style",e)
+
+        }
+    }
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
     private fun showDirections(origin: LatLng, destination: LatLng, apiKey: String) {
         // Remove the previous Polyline if it exists
@@ -166,16 +279,20 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             override fun onResponse(call: Call<List<Observation>>, response: Response<List<Observation>>) {
                 if (response.isSuccessful) {
                     val observations = response.body()
-                    mMap.clear() // Clear existing markers
+                    //mMap.clear() // Clear existing markers
+                    apiHotspotMarkers.forEach { it.remove() }
+                    apiHotspotMarkers.clear()
+
                     observations?.forEach { observation ->
                         val observationLocation = LatLng(observation.lat, observation.lng)
                         val distance = calculateDistance(userLocation.latitude, userLocation.longitude, observationLocation.latitude, observationLocation.longitude)
 
                         if (distance <= maxDistancePreference.getMaxDistance()) {
-                            mMap.addMarker(
-                                MarkerOptions().position(observationLocation)
-                                    .title(observation.comName)
-                            )
+                           val hotspotMarker = mMap.addMarker(MarkerOptions().position(observationLocation).title(observation.comName))
+                            hotspotMarker?.let {
+                                apiHotspotMarkers.add(it)
+                            }
+
                         }
                     }
                 } else {
@@ -190,44 +307,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     //------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-    fun decodePolyline(polyline: String): List<LatLng> {
-        val points = ArrayList<LatLng>()
-        var index = 0
-        val len = polyline.length
-        var lat = 0
-        var lng = 0
-
-        while (index < len) {
-            var b: Int
-            var shift = 0
-            var result = 0
-            do {
-                b = polyline[index++].toInt() - 63
-                result = result or (b and 0x1f shl shift)
-                shift += 5
-            } while (b >= 0x20)
-            val dlat = if (result and 1 != 0) (result shr 1).inv() else result shr 1
-            lat += dlat
-
-            shift = 0
-            result = 0
-            do {
-                b = polyline[index++].toInt() - 63
-                result = result or (b and 0x1f shl shift)
-                shift += 5
-            } while (b >= 0x20)
-            val dlng = if (result and 1 != 0) (result shr 1).inv() else result shr 1
-            lng += dlng
-
-            val p = LatLng(
-                lat / 1e5,
-                lng / 1e5
-            )
-            points.add(p)
-        }
-        return points
-    }
 
     private fun drawRouteOnMap(
         googleMap: GoogleMap,

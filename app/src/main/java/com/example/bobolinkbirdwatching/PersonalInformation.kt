@@ -8,70 +8,121 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.Toast
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class PersonalInformation : AppCompatActivity() {
 
-    private val userDetailsList = mutableListOf<UserData>()
+    // Database references
+    private val databaseRef: DatabaseReference = FirebaseDatabase.getInstance().reference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_personal_information)
 
+        // Create an instance of UserSession
+
+        val userSession = UserSession(this)
+
+        // Details of the user currently logged in
+        val loggedEmail = userSession.currentEmail
+        val loggedFirstName = userSession.currentName
+        val loggedSurname = userSession.currentSurname
+        val loggedArea = userSession.currentArea
+
+
         // Referencing layout elements
         val firstNameEditText = findViewById<EditText>(R.id.editTextNewName)
         val lastNameEditText = findViewById<EditText>(R.id.editTextNewSurname)
-        val emailEditText = findViewById<EditText>(R.id.editTextNewEmail)
-        val passwordEditText = findViewById<EditText>(R.id.editTextNewPassword)
         val areaEditText = findViewById<EditText>(R.id.editTextNewArea)
 
-        // Check if userDetailsList is not empty before accessing its elements
-        if (userDetailsList.isNotEmpty()) {
-            // Populating the EditTexts with the current user's details
-            val currentUserDetails = userDetailsList[0]
-            firstNameEditText.hint = (currentUserDetails.firstName)
-            lastNameEditText.hint = (currentUserDetails.surname)
-            emailEditText.hint = (currentUserDetails.email)
-            passwordEditText.hint = (currentUserDetails.password)
-            areaEditText.hint = (currentUserDetails.area)
-        }
+
+        // Populating the EditTexts with the current user's details
+        firstNameEditText.setText(loggedFirstName)
+        lastNameEditText.setText(loggedSurname)
+        areaEditText.setText(loggedArea)
 
         val saveButton = findViewById<Button>(R.id.buttonUpdate)
 
         saveButton.setOnClickListener {
             try {
                 // Getting the updated details from the EditTexts
-                val updatedEmail = emailEditText.text.toString()
-                val updatedPassword = passwordEditText.text.toString()
+                val updatedName = firstNameEditText.text.toString()
+                val updatedSurname = lastNameEditText.text.toString()
                 val updatedArea = areaEditText.text.toString()
 
-                // Check if userDetailsList is not empty before updating the details
-                if (userDetailsList.isNotEmpty()) {
-                    // Updating the user's details in the list
-                    val currentUserDetails = userDetailsList[0]
-                    currentUserDetails.email = updatedEmail
-                    currentUserDetails.password = updatedPassword
-                    currentUserDetails.area = updatedArea
-                }
+                // Calling method to update user details
+                updateUserDetails(loggedEmail, updatedName, updatedSurname, updatedArea, userSession)
 
-                // Refreshing the UI to display the updated details
-                emailEditText.setText(updatedEmail)
-                passwordEditText.setText(updatedPassword)
-                areaEditText.setText(updatedArea)
+
             } catch (e: Exception) {
                 // Error handling
                 Log.e(ContentValues.TAG, "Something went wrong, Please Try Again.")
             }
         }
 
+        // Back button functionality
         val backButton = findViewById<ImageButton>(R.id.closeLoginPage)
 
         backButton.setOnClickListener {
-            // Creating an Intent to navigate to the activity
-            val intent = Intent(this, UserSetting::class.java)
 
-            // Starting the activity
-            startActivity(intent)
+            // Redirecting user
+            navigateToUserSetting()
+
         }
+    }
+
+
+    // Method to update details
+    private fun updateUserDetails(oldEmail: String?, newName: String, newSurname: String, newArea: String, userSession: UserSession) {
+        oldEmail?.let {
+            // Query the database using the old email to get the UID
+            databaseRef.child("tbl_users").orderByChild("email").equalTo(oldEmail)
+                .addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        if (snapshot.exists()) {
+                            for (userSnapshot in snapshot.children) {
+                                // Update user details
+                                userSnapshot.ref.child("firstName").setValue(newName)
+                                userSnapshot.ref.child("surname").setValue(newSurname)
+                                userSnapshot.ref.child("area").setValue(newArea)
+
+                                // Success message
+                                Toast.makeText(this@PersonalInformation, "Details Updated Successfully!", Toast.LENGTH_SHORT).show()
+
+                                // Instance of the Login class
+                                val loginInstance = Login()
+
+
+                                // Calling method to fetch user details again
+                                loginInstance.retrieveUserDetails(oldEmail, userSession)
+                          }
+                        }
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+
+                        // Logging error
+                        Log.e(ContentValues.TAG, "Error updating user details: $error")
+                        Toast.makeText(this@PersonalInformation, "Something went wrong, Please Try Again.", Toast.LENGTH_SHORT).show()
+                    }
+                })
+        }
+    }
+
+    // Method to move from activity to fragment
+    private fun navigateToUserSetting() {
+
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 
 }

@@ -5,6 +5,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
+    id("com.google.gms.google-services")
 }
 
 val localProperties = Properties()
@@ -62,6 +63,14 @@ android {
 
 dependencies {
 
+    // Importing the BoM for the Firebase platform
+    implementation(platform("com.google.firebase:firebase-bom:32.5.0"))
+
+    // Adding the dependency for the Firebase Authentication library
+    implementation("com.google.firebase:firebase-auth")
+
+    implementation("com.google.firebase:firebase-analytics")
+
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
     implementation("androidx.activity:activity-compose:1.8.0")
@@ -83,6 +92,8 @@ dependencies {
 //    For the Fragments
     implementation ("androidx.navigation:navigation-fragment-ktx:2.4.0")
     implementation ("androidx.navigation:navigation-ui-ktx:2.4.0")
+    implementation("com.google.firebase:firebase-database:20.3.0")
+    implementation("com.google.firebase:firebase-database-ktx:20.3.0")
 
 
 

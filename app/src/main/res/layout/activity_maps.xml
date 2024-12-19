@@ -48,9 +48,9 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/maxDistanceButton"
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:layout_height="50dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
             android:text="Set Max Distance"
@@ -73,8 +73,8 @@
             android:layout_height="45dp"
             android:layout_gravity="center"
             android:text="Return Home"
-            android:textColor="@color/white"
-            android:background="@drawable/tertiary_style_button"
+            android:textColor="@color/black"
+            android:background="@drawable/secondary_style_button"
             android:textSize="16sp"
             android:textAllCaps="false"
             android:layout_marginTop="30dp"
@@ -82,7 +82,7 @@
             android:layout_marginLeft="65dp"
             android:layout_marginRight="65dp"
             android:paddingEnd="16dp"
-            android:drawableLeft="@drawable/baseline_chevron_left_24"
+            android:drawableLeft="@drawable/baseline_home_24_black"
             android:paddingStart="16dp" />
     </LinearLayout>
 </RelativeLayout>

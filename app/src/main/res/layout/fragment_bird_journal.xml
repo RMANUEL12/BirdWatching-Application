@@ -10,7 +10,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <!-- Image  -->
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/magic_journal"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="-50dp"/>
+
+        <!-- Interface Heading -->
 
         <TextView
             android:id="@+id/textCollection"
@@ -19,13 +31,16 @@
             android:text="My Collection"
             android:textSize="30sp"
             android:textColor="@color/white"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp"/>
 
-
+        <!-- Collection ListView -->
         <ListView
             android:id="@+id/observationList"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="400dp"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="0.5dp" />
 
     </LinearLayout>
 
