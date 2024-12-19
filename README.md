@@ -1,81 +1,46 @@
-Bobolink Birdwatching App
+# 🐦‍⬛ Bobolink App 🐦‍⬛
 
-Features
+## Features
 
-Create a Bobolink Account: Sign up to personalize your experience.
+- Create a Bobolink account.
+- View bird observation hotspots in the area.
+- Filter hotspots based on the user's location and preferences.
+- Get directions from the user's current location to a selected hotspot.
+- Toggle between metric and imperial units for distance measurements.
+- Save bird sightings.
 
-View Bird Observation Hotspots: Discover popular birdwatching locations in your area.
+## Installation
 
-Filter Hotspots: Customize results based on your location and preferences.
+To run this app on your Android device or emulator, follow these steps:
 
-Get Directions: Navigate from your current location to a selected hotspot.
+1. Clone this repository to your local machine.
+2. Open the project in Android Studio.
+3. Clean, rebuild, and run the app on your preferred Android device or emulator.
 
-Toggle Measurement Units: Switch between metric and imperial units for distance measurements.
+## Requirements
 
-Save Bird Sightings: Log and manage your bird observations.
+- Minimum SDK: API 27 ("Oreo"; Android 8.1) or higher.
+- Allow the app to use your current location.
 
-Installation
+## How to Navigate Through the Bobolink Application
 
-From GitHub:
+- **Get Started Window**: Contains a greeting and a button to start using the app.
+- **Register/Login**: Choose between registering or logging in.
+- **Find Birds Window**: Displays a bird icon with an "Open Map" button. Clicking it opens a map where you can:
+  - Set the maximum distance you're willing to travel.
+  - Toggle between imperial and metric units.
+  - Get directions to a hotspot by selecting a marker and clicking "Get Directions."
+  
+At the bottom of the screen, there's a menu bar with the following options:
+- **Home**: Takes you to the home screen.
+- **Bird Observation**: Save a bird observation by selecting a breed and entering a name. Your current location and date are saved automatically.
+- **Bird Journal**: View your bird observations.
+- **Settings**: Edit your personal information or log out.
 
-Clone this repository to your local machine:
+## Technologies Used
 
-git clone https://github.com/your-repository-url.git
-
-Open the project in Android Studio.
-
-Clean, rebuild, and run the app on your preferred Android device or emulator.
-
-Requirements
-
-Minimum SDK: API 27 ("Oreo"; Android 8.1) or higher.
-
-Allow the app to access your current location.
-
-How to Navigate the Bobolink Application
-
-Initial Setup:
-
-Upon launching the app, you will see a Get Started screen with a greeting message and a button to proceed.
-
-After clicking "Get Started," you will be directed to a screen with two options:
-
-Register: Create a new account.
-
-Login: Sign in to your existing account.
-
-Main Features:
-
-Find Birds:
-
-Access the "Find Birds" screen, featuring a detective bird icon and an Open Map button.
-
-On the map:
-
-Set your maximum travel distance.
-
-Toggle between metric and imperial units.
-
-Select a marker and click the Get Directions button to navigate to a hotspot.
-
-Bottom Navigation Menu:
-
-Home: Navigate back to the home screen.
-
-Bird Observation: Save your bird sightings by selecting a bird species and entering its name. Your current location and the date will be saved automatically.
-
-Bird Journal: View your saved bird observations.
-
-Settings: Update personal information or log out of the app.
-
-Technologies Used
-
-Android Studio: Integrated Development Environment (IDE) for development.
-
-Retrofit: For API communication.
-
-Google Maps API: To display interactive maps.
-
-eBird API: To fetch bird hotspots data.
-
-Google Directions API: To provide navigation to hotspots.
+- Android Studio
+- Retrofit for API communication
+- Google Maps API to display the map
+- eBird API for bird hotspots data
+- Google Directions API to get directions to hotspots
